@@ -5,10 +5,13 @@
 
 from datetime import date, timedelta
 import math
-import logging
+import logging  
+
 
 logging.basicConfig(level=logging.INFO)
-orbe_tolerance : float = 0.5
+orbe_tolerance : float = 1.0
+
+
 
 def dateptrdiffs(ya, ma, da, yb, mb, db):
     """ get delta dates in days"""
@@ -36,13 +39,14 @@ def get_RAMC(grade:int,mins:int,secs:int):
     cos_dec = math.cos(math.radians(declination))
     ramc_rad = math.atan(tan_long*cos_dec)
     RAMC = math.degrees(ramc_rad)
+    logging.debug(f'{grade} {mins} {secs} raw RAMC: {RAMC}')
     if (RAMC<0):
-        if grade >270:
+        if grade >=270:
             RAMC = RAMC + 360
-        elif grade >180:
+        elif grade >=180:
             RAMC = RAMC + 270
     else:
-        if grade >180:
+        if grade >=180:
             RAMC = 180 + RAMC
     return RAMC
 
@@ -78,36 +82,47 @@ def identify_aspect(diff:float):
 
     if a_90<orbe_tolerance:
         matches.append(90-diff)
+        logging.info("----------------------------------- ")
         logging.info(f'cuadratura 90°: {a_90}')
     if a_0<orbe_tolerance:
         matches.append(diff)
+        logging.info("----------------------------------- ")
         logging.info(f'conjucion 0°: {a_0}')
     if a_180<orbe_tolerance:
         matches.append(180-diff)
+        logging.info("----------------------------------- ")
         logging.info(f'oposicion 180°: {a_180}')
     if a_60<orbe_tolerance:
         matches.append(60-diff)
+        logging.info("----------------------------------- ")
         logging.info(f'sextial 60°: {a_60}')
     if a_120<orbe_tolerance:
         matches.append(120-diff)
+        logging.info("----------------------------------- ")
         logging.info(f'cuadratura 120°: {a_120}')
     if a_150<orbe_tolerance:
         matches.append(150-diff)
+        logging.info("----------------------------------- ")
         logging.info(f'quincuncio 150°: {a_150}')
     if a_30<orbe_tolerance:
         matches.append(30-diff)
+        logging.info("----------------------------------- ")
         logging.info(f'semisextil 30°: {a_30}')
     if a_45<orbe_tolerance:
         matches.append(45-diff)
+        logging.info("----------------------------------- ")
         logging.info(f'semicuadratural 45°: {a_45}')
     if a_135<orbe_tolerance:
         matches.append(135-diff)
+        logging.info("----------------------------------- ")
         logging.info(f'sesquicuadratura 135°: {a_135}')
     if a_72<orbe_tolerance:
         matches.append(72-diff)
+        logging.info("----------------------------------- ")
         logging.info(f'quintil 72°: {a_72}')
     if a_144<orbe_tolerance:
         matches.append(144-diff)
+        logging.info("----------------------------------- ")
         logging.info(f'biquintil 144°: {a_144}')
     
     return matches
@@ -187,6 +202,13 @@ if __name__ == '__main__':
     native_dates[event_title]=direction_arc
     logging.debug(f'days {delta_days} direction arc: {direction_arc}')
 
+    delta_days = dateptrdiffs(1976, 12, 26, 2016, 12, 1)
+    direction_arc = get_direction_arc(delta_days)
+    event_title="Ingreso a IBM de Colombia"
+    native_dates[event_title]=direction_arc
+    logging.debug(f'days {delta_days} direction arc: {direction_arc}')
+
+
     """
     long ecliptica absoluta: posición desde 0 Aries
     """
@@ -201,6 +223,12 @@ if __name__ == '__main__':
     neptune = (30*8) + 14 + 28/60
     pluto = (30*6) + 14 + 3/60/ + 57/3600
     mean_node = (30*7) + 0 + 9/60 + 51/3600
+    AC = 25 + 11/60 + 1/3600
+    II = (30*1) + 23 + 39/60 + 59/3600
+    III = (30*2) + 24 + 46/60 + 52/3600
+    IC = (30*3) + 27 + 39/60 + 1/3600
+    V = (30*5) + 0 + 9/60 + 8/3600
+    VI = (30*5) + 29 + 44/60 + 59/3600
 
     objects = {"sun":sun,
                "moon":moon,
@@ -212,11 +240,18 @@ if __name__ == '__main__':
                "uranus":uranus,
                "neptune":neptune,
                "pluto":pluto,
-               "mean_node":mean_node}
+               "mean_node":mean_node,
+               "AC":AC,
+               "II":II,
+               "III":III,
+               "IC":IC,
+               "V":V,
+               "VI":VI
+               }
 
     for cur_event in native_dates:
         cur_arc = native_dates[cur_event]
-        logging.info(f'--- rectificando para arco {cur_arc} {cur_event} ----')
+        logging.info(f'\n\n--- rectificando para arco {cur_arc} {cur_event} ----')
 
         # direccionar el arco sobre el MC
         direct = RAMC_radix + cur_arc
@@ -239,11 +274,11 @@ if __name__ == '__main__':
             logging.debug(f'direct diff: {direct_diff}')
             logging.debug(f'converse diff: {converse_diff}')
 
-            logging.debug('identificando aspectos con {cur_object} radical')
+            logging.debug(f'identificando aspectos con {cur_object} radical')
             aspects = identify_aspect(direct_diff)
             if len(aspects)>0:
-                logging.info('--------------------------------------')
-                logging.info(f'{cur_object} 🎯 aspects: {aspects[0]} orbe')
+                logging.info(f'MC ecliptica {eclep_longitude_direct}')
+                logging.info(f'{cur_object} {object_ecliptic_long} 🎯 aspects: {aspects[0]} orbe')
                 adhj_eclep_longitude_dir = eclep_longitude_direct + aspects[0]
                 g,m,s = get_angle_sexag(adhj_eclep_longitude_dir)
                 temp_ramc = get_RAMC(g, m, s)
@@ -254,8 +289,8 @@ if __name__ == '__main__':
 
             aspects = identify_aspect(converse_diff)
             if len(aspects) > 0:
-                logging.info('--------------------------------------')
-                logging.info(f'{cur_object} 🎯 aspects: {aspects[0]} orbe')
+                logging.info(f'MC ecliptica {eclep_longitude_converse}')
+                logging.info(f'{cur_object} {object_ecliptic_long} 🎯 aspects: {aspects[0]} orbe')
                 adhj_eclep_longitude_converse = eclep_longitude_converse + aspects[0]
                 g,m,s = get_angle_sexag(adhj_eclep_longitude_converse)
                 temp_ramc = get_RAMC(g, m, s)
