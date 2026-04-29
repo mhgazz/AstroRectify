@@ -3,6 +3,7 @@ import math
 import logging  
 
 logging.basicConfig(level=logging.INFO)
+orbe_tolerance : float = 1.0
 
 def get_angle_sexag(adhj_eclep_longitude_dir):
     g = int(adhj_eclep_longitude_dir)
@@ -102,37 +103,64 @@ def get_angle_sexag(adhj_eclep_longitude_dir):
     logging.debug(f'sexagecimal angle: {g} {m} {s}')
     return g,m,s
 
+def dateptrdiffs(ya, ma, da, yb, mb, db):
+    """ get delta dates in days"""
+    date_a=date(ya,ma,da)
+    date_b=date(yb,mb,db)
+    delta = date_b-date_a
+    return int(delta.days)
+
+def get_RAMC(grade:int,mins:int,secs:int):
+    """ provide Right Ascention for Mideum Coeli with standard declination value 23.44"""
+    declination: float = 23.44
+    dec_angle = convert_angle_decimal(grade,mins,secs)
+    radian_angle = math.radians(dec_angle)
+    tan_long = math.tan(radian_angle)
+    cos_dec = math.cos(math.radians(declination))
+    ramc_rad = math.atan(tan_long*cos_dec)
+    RAMC = math.degrees(ramc_rad)
+    logging.debug(f'{grade} {mins} {secs} raw RAMC: {RAMC}')
+    if (RAMC<0):
+        if grade >=270:
+            RAMC = RAMC + 360
+        elif grade >=180:
+            RAMC = RAMC + 270
+    else:
+        if grade >=180:
+            RAMC = 180 + RAMC
+    return RAMC
+
 class natal_chart_object():
     """ Represents an astronomical object in a natal chart """
-    self.mars = "mars"
-    self.mercury = "mercury"
-    self.jupiter = "jupiter"
-    self.saturn = "saturn"
-    self.uranus = "uranus"
-    self.neptune = "neptune"
-    self.pluto = "pluto"
-    self.sun = "sun"
-    self.moon = "moon"
-    self.venus = "venus"
-    self.mean_node = "mean_node"    
-    self.AC = "AC"
-    self.II = "II"
-    self.III = "III"
-    self.IC = "IC"
-    self.V = "V"
-    self.VI = "VI"
-    self.aries="aries"
-    self.taurus="taurus"
-    self.gemini="gemini"
-    self.cancer="cancer"
-    self.leo="leo"
-    self.virgo="virgo"
-    self.libra="libra"
-    self.scorpio="scorpio"
-    self.sagittarius="sagittarius"
-    self.capricorn="capricorn"
-    self.aquarius="aquarius"
-    self.piscis="piscis"
+    mars = "mars"
+    mercury = "mercury"
+    jupiter = "jupiter"
+    saturn = "saturn"
+    uranus = "uranus"
+    neptune = "neptune"
+    pluto = "pluto"
+    sun = "sun"
+    moon = "moon"
+    venus = "venus"
+    mean_node = "mean_node"    
+    AC = "AC"
+    II = "II"
+    III = "III"
+    IC = "IC"
+    V = "V"
+    VI = "VI"
+    aries="aries"
+    taurus="taurus"
+    gemini="gemini"
+    cancer="cancer"
+    leo="leo"
+    virgo="virgo"
+    libra="libra"
+    scorpio="scorpio"
+    sagittarius="sagittarius"
+    capricorn="capricorn"
+    aquarius="aquarius"
+    piscis="piscis"
 
     def __init__(self, name: str, degrees: int, minutes: int, seconds: int, sign: str):
         self.name = name

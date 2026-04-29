@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/rectifier/__init__.py
+src/rectifier/utils.py
+src/rectifier.egg-info/PKG-INFO
+src/rectifier.egg-info/SOURCES.txt
+src/rectifier.egg-info/dependency_links.txt
+src/rectifier.egg-info/requires.txt
+src/rectifier.egg-info/top_level.txt
+test/test_rectifier_mgazzola.py
