@@ -140,7 +140,8 @@ if __name__ == '__main__':
     MC_adjust=[]
     #colocar MC en long ecliptica absoluta
     RAMC_radix = get_RAMC(297,36,8)
-    geograph_long = 4.046262
+    #geograph_long = 4.046262
+    geograph_long = 4.042629629629629
     HS_GMT = 6.30777 
     GMT_Hour = -3
 
@@ -216,12 +217,12 @@ if __name__ == '__main__':
     moon = (30*11) + 17 + 9/60 + 43/3600
     mercury = (30*9) + 23 + 7/60 + 48/3600
     venus = (30*10) + 20 + 1/60 + 49/3600
-    mars =  (30*5) + 12 + 3/60 + 48/3600
+    mars =  (30*8) + 12 + 3/60 + 48/3600
     jupiter = (30*1) + 21 + 50/60 + 15/3600
-    saturn = (30*3) + 16 +  7/60 + 2/3600
+    saturn = (30*4) + 16 +  7/60 + 2/3600
     uranus = (30*7) + 10 + 40/60 + 8/3600
     neptune = (30*8) + 14 + 28/60
-    pluto = (30*6) + 14 + 3/60/ + 57/3600
+    pluto = (30*6) + 14 + 3/60 + 57/3600
     mean_node = (30*7) + 0 + 9/60 + 51/3600
     AC = 25 + 11/60 + 1/3600
     II = (30*1) + 23 + 39/60 + 59/3600
@@ -315,9 +316,10 @@ if __name__ == '__main__':
         new_eceliptic_long = get_ecliptic_longitude(new_ARMC)
         logging.info(f'ARMC radical original {RAMC_radix}')
         logging.info(f'nueva longitud ecliptica {new_eceliptic_long}')
+        logging.info(f'logitud geografica {geograph_long}')
         HL = ((new_ARMC/15 + geograph_long - HS_GMT)*.99727) + GMT_Hour
         h,m,s = get_angle_sexag(HL)
-        logging.info(f'nueva hora local {h} {m} {s}')
+        logging.info(f'nueva hora local decimal {HL} civil {h} {m} {s}')
 
     """
     mercury_diff = eclep_longitude_direct - mercury

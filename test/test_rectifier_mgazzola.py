@@ -25,6 +25,8 @@ def test_rectifier():
     r.add_event("Accidente lumbar con perdida de movilidad",2022,12,7)
     r.add_event("Primera separacion",2009,2,27)
     r.add_event("Ingreso a IBM de Colombia",2016,12,1)
+    r.add_event("Graduacion",2002,11,29)
+    r.add_event("Mundanza al campo",2022,5,13)
     r.add_object(natal_chart_object(natal_chart_object.sun,5,5,56,natal_chart_object.capricorn))
     r.add_object(natal_chart_object(natal_chart_object.moon,17,9,43,natal_chart_object.piscis))
     r.add_object(natal_chart_object(natal_chart_object.mercury,23,7,48,natal_chart_object.capricorn))
@@ -46,4 +48,7 @@ def test_rectifier():
     new_HL = r.calculate()
     logging.info(f'nueva hora local {new_HL}')
     print(f'nueva hora local {new_HL}')
-    assert new_HL == "14hs 40ms 19scs"
+    assert new_HL == "14hs 40ms 21scs"
+
+if __name__ == "__main__":
+    test_rectifier()

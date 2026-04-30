@@ -1,0 +1,2 @@
+get_ecliptic_longitude()
+resolver problema de ARs negativas para ARMC de la primera mitad de los signos

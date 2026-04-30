@@ -16,7 +16,11 @@ class Rectifier:
     objects = {}
     geograph_long = 0   #birth location geoghaphic longitude decimal
     HS_GMT = 0          #sideral hour greenwich midnight taken from ephemerides
-    GMT_Hour =0         #time zone GMT 
+    GMT_Hour =0         #time zone GMT
+    radix_MC_grade = 0
+    radix_MC_mins = 0
+    radix_MC_secs = 0
+
 
     def __init__(self):
  
@@ -43,9 +47,9 @@ class Rectifier:
     def set_geograph_long(self,hemis:str,degrees:int,mins:int,secs:int):
         """set geographic location logingitude for west o east use W or E"""
         if hemis=="W":
-            dec_longitude = -convert_angle_decimal(degrees,mins,secs)
+            dec_longitude = convert_angle_decimal(degrees,mins,secs)/15
         else:
-            dec_longitude = convert_angle_decimal(degrees,mins,secs)
+            dec_longitude = -convert_angle_decimal(degrees,mins,secs)/15
 
         self.logger.debug(f'longitud geografica {hemis} {dec_longitude}')
         self.geograph_long = dec_longitude
@@ -55,6 +59,13 @@ class Rectifier:
         self.birth_y = year
         self.birth_m = month
         self.birth_d = day
+
+    def set_radix_MC(self,grade:int,mins:int,secs:int):
+        """ provide ecliptic longitude for Mideum Coeli with standard declination value 23.44"""
+        self.radix_MC_grade = grade
+        self.radix_MC_mins = mins
+        self.radix_MC_secs = secs
+        
 
     def add_event(self,event_title:str,event_year:int,event_month:int,event_day:int):
         delta_days = dateptrdiffs(self.birth_y, self.birth_m, self.birth_d, event_year, event_month,event_day)
@@ -70,7 +81,8 @@ class Rectifier:
         
         MC_adjust=[]
         #colocar MC en long ecliptica absoluta
-        RAMC_radix = get_RAMC(self.birth_y,self.birth_m,self.birth_d)
+        RAMC_radix = get_RAMC(self.radix_MC_grade,self.radix_MC_mins,self.radix_MC_secs)
+        self.logger.info(f'RAMC del radix {RAMC_radix}')
 
         #iterate on given events
         for cur_event in self.native_dates:
@@ -80,17 +92,16 @@ class Rectifier:
             # direccionar el arco sobre el MC
             direct = RAMC_radix + cur_arc
             converse = RAMC_radix - cur_arc
-            self.logger.info(f'direct: {direct}')
-            self.logger.info(f'converse: {converse}')
+            self.logger.info(f'direct RA: {direct}')
+            self.logger.info(f'converse RA: {converse}')
+            eclep_longitude_direct = get_ecliptic_longitude(direct)
+            eclep_longitude_converse = get_ecliptic_longitude(converse)
+            self.logger.info(f'direct Ecliptic longitude: {eclep_longitude_direct}')
+            self.logger.info(f'converse Ecliptic longitude: {eclep_longitude_converse}')
 
             for cur_object in self.objects.keys():
                 object_ecliptic_long = self.objects.get(cur_object)
                 self.logger.debug(f'processing {cur_object} {str(object_ecliptic_long)}')
-
-                eclep_longitude_direct = get_ecliptic_longitude(direct)
-                eclep_longitude_converse = get_ecliptic_longitude(converse)
-                self.logger.debug(f'direct Ecliptic longitude: {eclep_longitude_direct}')
-                self.logger.debug(f'converse Ecliptic longitude: {eclep_longitude_converse}')
 
                 direct_diff = eclep_longitude_direct - object_ecliptic_long
                 converse_diff = eclep_longitude_converse - object_ecliptic_long
@@ -103,7 +114,7 @@ class Rectifier:
                 
                 if len(aspects)>0:
                     self.logger.info(f'MC ecliptica {eclep_longitude_direct}')
-                    self.logger.info(f'{cur_object} {object_ecliptic_long} 🎯 aspects: {aspects[0]} orbe')
+                    self.logger.info(f'{cur_object} {object_ecliptic_long} 🎯 aspect {aspects[1]} {aspects[2]} orbe {aspects[0]}')
                     adhj_eclep_longitude_dir = eclep_longitude_direct + aspects[0]
                     g,m,s = get_angle_sexag(adhj_eclep_longitude_dir)
                     temp_ramc = get_RAMC(g, m, s)
@@ -115,7 +126,7 @@ class Rectifier:
                 aspects = identify_aspect(converse_diff)
                 if len(aspects) > 0:
                     self.logger.info(f'MC ecliptica {eclep_longitude_converse}')
-                    self.logger.info(f'{cur_object} {object_ecliptic_long} 🎯 aspects: {aspects[0]} orbe')
+                    self.logger.info(f'{cur_object} {object_ecliptic_long} 🎯 aspect {aspects[1]} {aspects[2]} orbe {aspects[0]}')
                     adhj_eclep_longitude_converse = eclep_longitude_converse + aspects[0]
                     g,m,s = get_angle_sexag(adhj_eclep_longitude_converse)
                     temp_ramc = get_RAMC(g, m, s)
@@ -129,18 +140,23 @@ class Rectifier:
         self.logger.info("--------------------------------")
         x = 0
         t = 0
+        
         for cur_ARMC in MC_adjust:
             x = x + 1
             t = t + cur_ARMC
             self.logger.info(f'MC radix ajustado: {cur_ARMC}')
-        new_ARMC = t/x
+        
         if x > 0:
+            new_ARMC = t/x
             self.logger.info("--------------------------")
             self.logger.info(f'nueva ARMC {new_ARMC}')
             new_eceliptic_long = get_ecliptic_longitude(new_ARMC)
             self.logger.info(f'ARMC radical original {RAMC_radix}')
             self.logger.info(f'nueva longitud ecliptica {new_eceliptic_long}')
-            HL = ((new_ARMC/15 + self.geograph_long - self.HS_GMT)*.99727) + self.GMT_Hour
+            
+            # get new local time
+            #HL = ((new_ARMC/15 + self.geograph_long - self.HS_GMT)*.99727) + self.GMT_Hour
+            HL = convert_ARMC_to_HL(new_ARMC,self.geograph_long,self.HS_GMT,self.GMT_Hour)
             h,m,s = get_angle_sexag(HL)
             self.logger.info(f'nueva hora local {h} {m} {s}')
             return f'{h}hs {m}ms {s}scs'
