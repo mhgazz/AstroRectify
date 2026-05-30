@@ -12,14 +12,18 @@ class Rectifier:
     birth_d = 0
     MC_adjust=[]
     logger = None
-    orbe_tolerance : float = 1.0
+    orbe_tolerance : float = 0.0666667  #equivalente a 4' de arco
     objects = {}
-    geograph_long = 0   #birth location geoghaphic longitude decimal
-    HS_GMT = 0          #sideral hour greenwich midnight taken from ephemerides
-    GMT_Hour =0         #time zone GMT
+    geograph_long = 0                   #birth location geoghaphic longitude decimal
+    HS_GMT = 0                          #sideral hour greenwich midnight taken from ephemerides
+    GMT_Hour =0                         #time zone GMT
     radix_MC_grade = 0
     radix_MC_mins = 0
     radix_MC_secs = 0
+    AC_factor = 0.00273791              #factor de aceleración
+    includes = []
+
+
 
 
     def __init__(self):
@@ -29,14 +33,22 @@ class Rectifier:
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
         # Console Handler
-        console_handler = logging.StreamHandler(sys.stdout)
-        console_handler.setFormatter(formatter)
-        self.logger.addHandler(console_handler)
+        #console_handler = logging.StreamHandler(sys.stdout)
+        #console_handler.setFormatter(formatter)
+        #self.logger.addHandler(console_handler)
         
         # File Handler
         file_handler = logging.FileHandler("AstroRectify.log")
         file_handler.setFormatter(formatter)
         self.logger.addHandler(file_handler)
+
+    def set_includes(self, includes):
+        args = includes.split(",")
+        for cur_include in args:
+            self.includes.append(cur_include)
+
+    def set_orbe_tolerance(self,orbe_tolerance:float):
+        self.orbe_tolerance = orbe_tolerance
 
     def set_HS_GMT(self,HS_GMT:float):
         self.HS_GMT = HS_GMT
@@ -51,7 +63,7 @@ class Rectifier:
         else:
             dec_longitude = -convert_angle_decimal(degrees,mins,secs)/15
 
-        self.logger.debug(f'longitud geografica {hemis} {dec_longitude}')
+        self.logger.info(f'longitud geografica {hemis} {dec_longitude}')
         self.geograph_long = dec_longitude
         
 
@@ -110,7 +122,7 @@ class Rectifier:
                 self.logger.debug(f'converse diff: {converse_diff}')
 
                 self.logger.debug(f'identificando aspectos con {cur_object} radical')
-                aspects = identify_aspect(direct_diff)
+                aspects = identify_aspect(direct_diff,self.orbe_tolerance)
                 
                 if len(aspects)>0:
                     self.logger.info(f'MC ecliptica {eclep_longitude_direct}')
@@ -121,9 +133,9 @@ class Rectifier:
                     self.logger.info(f'MC RA directo ajustada {temp_ramc}')
                     adj_ramc =  temp_ramc - cur_arc
                     self.logger.info(f'--> RA directa ajustada: {adj_ramc} 🆗')
-                    MC_adjust.append(adj_ramc)
+                    MC_adjust.append((adj_ramc,cur_object,aspects[2],aspects[0],cur_event))
 
-                aspects = identify_aspect(converse_diff)
+                aspects = identify_aspect(converse_diff,self.orbe_tolerance)
                 if len(aspects) > 0:
                     self.logger.info(f'MC ecliptica {eclep_longitude_converse}')
                     self.logger.info(f'{cur_object} {object_ecliptic_long} 🎯 aspect {aspects[1]} {aspects[2]} orbe {aspects[0]}')
@@ -133,22 +145,35 @@ class Rectifier:
                     self.logger.info(f'--> RA conversa ajustada: {temp_ramc}')
                     adj_ramc =  temp_ramc + cur_arc
                     self.logger.info(f'--> MC radix ajustado: {adj_ramc} 🆗')
-                    MC_adjust.append(adj_ramc)
+                    MC_adjust.append((adj_ramc,cur_object,aspects[2],aspects[0],cur_event))
 
         #results computing
         self.logger.info("\n\n\nresultados finales:")
         self.logger.info("--------------------------------")
         x = 0
         t = 0
+        av_c = 0
         
-        for cur_ARMC in MC_adjust:
-            x = x + 1
-            t = t + cur_ARMC
-            self.logger.info(f'MC radix ajustado: {cur_ARMC}')
-        
-        if x > 0:
-            new_ARMC = t/x
+        with open("result.csv","w") as result_file:
+            print(self.includes)
+            for cur_finding in MC_adjust:
+                if str(x+1) in self.includes or len(self.includes)==0:
+                    print(f"encontre {x+1} en includes")
+                    cur_ARMC = cur_finding[0]
+                    cur_object = cur_finding[1]
+                    cur_aspect = cur_finding[2]
+                    cur_orbe = cur_finding[3]
+                    cur_event = cur_finding[4]
+                    t = t + cur_ARMC
+                    self.logger.info(f'MC radix ajustado: {x+1} {cur_ARMC}, {cur_object}, {cur_aspect}, {cur_event}')
+                    result_file.write(f'{cur_ARMC},{cur_object},{cur_aspect},{cur_event},{cur_orbe}\n')
+                    av_c = av_c + 1
+                x = x + 1
+
+        if av_c > 0:
+            new_ARMC = t/av_c
             self.logger.info("--------------------------")
+            self.logger.info(f'con tolerancia orbe {self.orbe_tolerance} ({self.orbe_tolerance*60}\")')
             self.logger.info(f'nueva ARMC {new_ARMC}')
             new_eceliptic_long = get_ecliptic_longitude(new_ARMC)
             self.logger.info(f'ARMC radical original {RAMC_radix}')
@@ -156,8 +181,12 @@ class Rectifier:
             
             # get new local time
             #HL = ((new_ARMC/15 + self.geograph_long - self.HS_GMT)*.99727) + self.GMT_Hour
-            HL = convert_ARMC_to_HL(new_ARMC,self.geograph_long,self.HS_GMT,self.GMT_Hour)
-            h,m,s = get_angle_sexag(HL)
+            HL = convert_ARMC_to_HL(new_ARMC,self.geograph_long,self.HS_GMT,0)
+            ac = HL * self.AC_factor
+            self.logger.info(f'Aceleración {HL} * {self.AC_factor}={ac}')
+            new_ARMC_adj_ac = new_ARMC - ac
+            HL_final = convert_ARMC_to_HL(new_ARMC_adj_ac,self.geograph_long,self.HS_GMT,self.GMT_Hour)
+            h,m,s = get_angle_sexag(HL_final)
             self.logger.info(f'nueva hora local {h} {m} {s}')
             return f'{h}hs {m}ms {s}scs'
         else:

@@ -1,4 +1,4 @@
-trimport sys
+import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src/rectifier')))
 import Rectifier
@@ -14,6 +14,7 @@ def test_rectifier():
     r.set_GMT_Hour(-3)
     r.set_radix_bithdate(1949,7,28)
     r.set_radix_MC(113,26,10)
+    r.set_orbe_tolerance(1.0)
     r.add_event("Fallecimiento de hermano",1962,9,12)
     r.add_event("Fallecimiento de hermano",2014,1,3)
     r.add_event("Graduacion",1971,12,17)
@@ -38,10 +39,11 @@ def test_rectifier():
     r.add_object(natal_chart_object(natal_chart_object.II,6,58,0,natal_chart_object.sagittarius))
     r.add_object(natal_chart_object(natal_chart_object.III,0,40,0,natal_chart_object.capricorn))
     r.add_object(natal_chart_object(natal_chart_object.IC,23,26,10,natal_chart_object.capricorn))
-    r.add_object(natal_chart_object(natal_chart_object.V,19,33,00,natal_chart_object.aquarius))
-    r.add_object(natal_chart_object(natal_chart_object.VI,23,41,0,natal_chart_object.piscis))
+    r.add_object(natal_chart_object(natal_chart_object.XI,19,33,00,natal_chart_object.leo))
+    r.add_object(natal_chart_object(natal_chart_object.XII,23,41,0,natal_chart_object.virgo))
 
     new_HL = r.calculate()
+    logging.info(f'nueva hora local {new_HL}')
     print(f'nueva hora local {new_HL}')
 
 

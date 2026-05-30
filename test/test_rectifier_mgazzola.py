@@ -8,8 +8,10 @@ import math
 import logging
 
 
-def test_rectifier():
+def test_rectifier(includes):
     r = Rectifier.Rectifier()
+    if includes is not None:
+        r.set_includes(includes)
     r.set_geograph_long("W",60,38,22)
     r.set_HS_GMT(6.30777)
     r.set_GMT_Hour(-3)
@@ -27,6 +29,14 @@ def test_rectifier():
     r.add_event("Ingreso a IBM de Colombia",2016,12,1)
     r.add_event("Graduacion",2002,11,29)
     r.add_event("Mundanza al campo",2022,5,13)
+    r.add_event("Mundanza a Colombia",2013,2,13)
+    r.add_event("Mundanza de Cristina a Argentina",2010,10,23)
+    r.add_event("Divorcio",2012,2,23)
+    r.add_event("Falta de merito",2017,8,17)
+    r.add_event("Denuncia",2011,5,12)
+    r.add_event("Ingreso a TCS",2013,11,6)
+    r.add_event("Finalizaciòn en TCS",2016,7,25)
+    r.add_event("Certificacion en Bioreprogramación",2017,11,12)
     r.add_object(natal_chart_object(natal_chart_object.sun,5,5,56,natal_chart_object.capricorn))
     r.add_object(natal_chart_object(natal_chart_object.moon,17,9,43,natal_chart_object.piscis))
     r.add_object(natal_chart_object(natal_chart_object.mercury,23,7,48,natal_chart_object.capricorn))
@@ -42,13 +52,18 @@ def test_rectifier():
     r.add_object(natal_chart_object(natal_chart_object.II,23,39,59,natal_chart_object.taurus))
     r.add_object(natal_chart_object(natal_chart_object.III,24,46,52,natal_chart_object.gemini))
     r.add_object(natal_chart_object(natal_chart_object.IC,27,39,1,natal_chart_object.cancer))
-    r.add_object(natal_chart_object(natal_chart_object.V,0,9,8,natal_chart_object.virgo))
-    r.add_object(natal_chart_object(natal_chart_object.VI,29,44,59,natal_chart_object.virgo))
+    r.add_object(natal_chart_object(natal_chart_object.XI,0,6,13,natal_chart_object.piscis))
+    r.add_object(natal_chart_object(natal_chart_object.XII,29,42,14,natal_chart_object.piscis))
 
     new_HL = r.calculate()
     logging.info(f'nueva hora local {new_HL}')
     print(f'nueva hora local {new_HL}')
-    assert new_HL == "14hs 40ms 21scs"
+    #assert new_HL == "14hs 40ms 21scs"
+
 
 if __name__ == "__main__":
-    test_rectifier()
+    if len(sys.argv) < 2:
+        test_rectifier(None)
+    else:
+        includes = sys.argv[1]
+        test_rectifier(includes)

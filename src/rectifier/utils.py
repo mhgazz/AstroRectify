@@ -2,8 +2,11 @@ from datetime import date, timedelta
 import math
 import logging  
 
-logging.basicConfig(level=logging.DEBUG)
-orbe_tolerance : float = 1.0
+logging.basicConfig(level=logging.INFO)
+#orbe_tolerance : float = 0.0666667 #equivalente a 4' de arco
+
+
+
 
 def convert_ARMC_to_HL(armc,long,HS_GMT,GMT_Hour):
     """convert ARMC to local hour"""
@@ -54,8 +57,9 @@ def get_ecliptic_longitude(ar:float):
     logging.debug(f'longitud ecliptica final {ecliptic_longitude}')
     return ecliptic_longitude
 
-def identify_aspect(diff:float):
+def identify_aspect(diff:float,orbe_tolerance_act:float = 0.0666667):
     
+    orbe_tolerance = orbe_tolerance_act
     matches = ()
     a_90 = abs(90 - diff)
     a_180 = abs(180 - diff)
@@ -119,8 +123,18 @@ def get_angle_sexag(decimal_angle:float):
     g = int(decimal_angle)
     m = int((decimal_angle % 1) * 60)
     s = round((((decimal_angle % 1) * 60) % 1) * 60)
+
+    if s == 60:
+        m += 1
+        s = 0
+        if m == 60:
+            horgas += 1
+            m = 0
+
     logging.debug(f'sexagecimal angle: {g} {m} {s}')
     return g,m,s
+
+
 
 def dateptrdiffs(ya, ma, da, yb, mb, db):
     """ get delta dates in days"""
@@ -168,8 +182,8 @@ class natal_chart_object():
     II = "II"
     III = "III"
     IC = "IC"
-    V = "V"
-    VI = "VI"
+    XI = "XI"
+    XII = "XII"
     aries="aries"
     taurus="taurus"
     gemini="gemini"

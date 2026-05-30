@@ -17,3 +17,6 @@ def test_get_angle_sexag():
     assert g == 113
     assert m == 26
     assert s == 10
+
+if __name__ ==  "__main__":
+    test_get_angle_sexag()
