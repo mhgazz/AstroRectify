@@ -3,9 +3,9 @@ import swisseph as swe
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
-lat = 32.95
-lng = 60.6394
-hsys = b"T"
+lat = -32.95
+lng = -60.6394
+hsys = b"W"
 date = datetime(1976, 12, 26, 17, 40, 0, tzinfo=timezone.utc)
 
 jd_ut, jd_tt = swe.utc_to_jd(
@@ -46,7 +46,7 @@ PLANET_IDS = {
 
 planets = []
 for name, id_val in PLANET_IDS.items():
-    coords, flag, _ = swe.calc_ut(jd_tt, id_val,swe.FLG_EQUATORIAL)
+    coords, flag, _ = swe.calc_ut(jd_tt, id_val)
    # returns coordinates, flags, and error messages
     longitude = coords[0]
     print(coords)
