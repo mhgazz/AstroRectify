@@ -1,0 +1,13 @@
+
+
+
+1987/03/02  arco:10.035 Sun|semisextil+|Neptune PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:285.71  DAuP:3.54 S_cuad:3
+    1990/01/16  arco:12.871 Sun|sextil-|Moon        PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:288.601 DAuP:3.49 S_cuad:3
+1993/02/01  arco:15.873 Sun|semisextil-|Venus   PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:291.671 DAuP:3.42 S_cuad:3
+2000/04/21  arco:22.984 Sun|sextil+|Pluto       PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:252.719 DAuP:3.51 S_cuad:3
+2002/11/25  arco:25.545 Sun|semicuadratura+|Nep PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:301.629 DAuP:3.13 S_cuad:4
+
+
+1988/12/07  arco:11.777 Sun|quincuncio+|Saturn  PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:287.485 DAuP:3.51 S_cuad:3
+1990/03/23  arco:13.05  Sun|semisextil-|Mercury PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:262.519 DAuP:3.65 S_cuad:3
+1991/08/29  arco:14.464 Sun|quincuncio-|Jupiter PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:261.117 DAuP:3.64 S_cuad:3
