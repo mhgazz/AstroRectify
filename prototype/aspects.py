@@ -13,7 +13,8 @@ def calculate_aspects(ra: float) -> dict[str,float]:
 
     # Función auxiliar para normalizar el ángulo entre 0 y 360 grados
     def normalize_angle(angle):
-        return angle % 360
+        #return angle % 360
+        return angle
 
     # Aspectos principales
     aspect_degrees = {

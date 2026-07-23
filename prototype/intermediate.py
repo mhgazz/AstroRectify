@@ -57,7 +57,7 @@ def main():
     polo_ASC = math.degrees(math.atan(1 * math.tan(math.radians(polo_ASC))))
     print ("polo ASC " + str(polo_ASC)) 
 
-
+    
     OAs = [RAMC+30,RAMC+60,RAMC+90,RAMC+120,RAMC+150]
     polos = [polo_XI_III,polo_XII_II,polo_ASC,polo_XII_II,polo_XI_III]
     

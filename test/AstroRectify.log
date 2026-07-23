@@ -25007,3 +25007,422 @@ resultados finales:
 2026-06-08 21:55:27,832 - AstroRectify - INFO - nueva longitud ecliptica 297.59900490952333
 2026-06-08 21:55:27,833 - AstroRectify - INFO - Aceleración 17.664760619452093 * 0.00273791=0.04836452474760408
 2026-06-08 21:55:27,833 - AstroRectify - INFO - nueva hora local 14 39 42
+2026-06-28 18:17:20,793 - AstroRectify - INFO - longitud geografica W 5.101111111111111
+2026-06-28 18:17:20,797 - AstroRectify - INFO - RAMC del radix 270.14926191550194
+2026-06-28 18:17:20,798 - AstroRectify - INFO - 
+
+--- rectificando para arco 25.30756458 Comienzo empleo profesional ----
+2026-06-28 18:17:20,798 - AstroRectify - INFO - direct RA: 295.45682649550196
+2026-06-28 18:17:20,798 - AstroRectify - INFO - converse RA: 244.84169733550195
+2026-06-28 18:17:20,798 - AstroRectify - INFO - direct Ecliptic longitude: 293.5940614382501
+2026-06-28 18:17:20,798 - AstroRectify - INFO - converse Ecliptic longitude: 246.68798287343762
+2026-06-28 18:17:20,799 - AstroRectify - INFO - 
+
+--- rectificando para arco 47.309331910000004 Renuncia ----
+2026-06-28 18:17:20,799 - AstroRectify - INFO - direct RA: 317.45859382550196
+2026-06-28 18:17:20,799 - AstroRectify - INFO - converse RA: 222.83993000550194
+2026-06-28 18:17:20,799 - AstroRectify - INFO - direct Ecliptic longitude: 314.99424302639585
+2026-06-28 18:17:20,799 - AstroRectify - INFO - converse Ecliptic longitude: 225.30524895550062
+2026-06-28 18:17:20,799 - AstroRectify - INFO - 
+
+--- rectificando para arco 35.85103385 Matrimonio ----
+2026-06-28 18:17:20,799 - AstroRectify - INFO - direct RA: 306.00029576550196
+2026-06-28 18:17:20,799 - AstroRectify - INFO - converse RA: 234.29822806550195
+2026-06-28 18:17:20,800 - AstroRectify - INFO - direct Ecliptic longitude: 303.6871610981842
+2026-06-28 18:17:20,800 - AstroRectify - INFO - converse Ecliptic longitude: 236.6024471407562
+2026-06-28 18:17:20,800 - AstroRectify - INFO - 
+
+--- rectificando para arco 37.02223059 Divorcio ----
+2026-06-28 18:17:20,800 - AstroRectify - INFO - direct RA: 307.17149250550193
+2026-06-28 18:17:20,800 - AstroRectify - INFO - converse RA: 233.12703132550195
+2026-06-28 18:17:20,800 - AstroRectify - INFO - direct Ecliptic longitude: 304.82571142423075
+2026-06-28 18:17:20,800 - AstroRectify - INFO - converse Ecliptic longitude: 235.46484643598075
+2026-06-28 18:17:20,801 - AstroRectify - INFO - 
+
+--- rectificando para arco 40.68964158 Comienzo de relación romántica ----
+2026-06-28 18:17:20,801 - AstroRectify - INFO - direct RA: 310.83890349550194
+2026-06-28 18:17:20,801 - AstroRectify - INFO - converse RA: 229.45962033550194
+2026-06-28 18:17:20,801 - AstroRectify - INFO - direct Ecliptic longitude: 308.4155695538868
+2026-06-28 18:17:20,801 - AstroRectify - INFO - converse Ecliptic longitude: 231.87806900273372
+2026-06-28 18:17:20,802 - AstroRectify - INFO - MC ecliptica 231.87806900273372
+2026-06-28 18:17:20,802 - AstroRectify - INFO - sun 96.84027777777777 🎯 aspect 135 sesquicuadratura orbe -0.037791224955952885
+2026-06-28 18:17:20,802 - AstroRectify - INFO - --> RA conversa ajustada: 229.42118575085854
+2026-06-28 18:17:20,802 - AstroRectify - INFO - --> MC radix ajustado: 270.11082733085857 🆗
+2026-06-28 18:17:20,803 - AstroRectify - INFO - 
+
+--- rectificando para arco 40.68964158 Jail ----
+2026-06-28 18:17:20,803 - AstroRectify - INFO - direct RA: 310.83890349550194
+2026-06-28 18:17:20,803 - AstroRectify - INFO - converse RA: 229.45962033550194
+2026-06-28 18:17:20,803 - AstroRectify - INFO - direct Ecliptic longitude: 308.4155695538868
+2026-06-28 18:17:20,803 - AstroRectify - INFO - converse Ecliptic longitude: 231.87806900273372
+2026-06-28 18:17:20,803 - AstroRectify - INFO - MC ecliptica 231.87806900273372
+2026-06-28 18:17:20,803 - AstroRectify - INFO - sun 96.84027777777777 🎯 aspect 135 sesquicuadratura orbe -0.037791224955952885
+2026-06-28 18:17:20,804 - AstroRectify - INFO - --> RA conversa ajustada: 229.42118575085854
+2026-06-28 18:17:20,804 - AstroRectify - INFO - --> MC radix ajustado: 270.11082733085857 🆗
+2026-06-28 18:17:20,804 - AstroRectify - INFO - 
+
+--- rectificando para arco 47.54411098 Casamiento civil con Mariano ----
+2026-06-28 18:17:20,804 - AstroRectify - INFO - direct RA: 317.69337289550197
+2026-06-28 18:17:20,805 - AstroRectify - INFO - converse RA: 222.60515093550194
+2026-06-28 18:17:20,805 - AstroRectify - INFO - direct Ecliptic longitude: 315.2299726447469
+2026-06-28 18:17:20,805 - AstroRectify - INFO - converse Ecliptic longitude: 225.06973106649087
+2026-06-28 18:17:20,805 - AstroRectify - INFO - 
+
+--- rectificando para arco 46.20290181 Mundanza al campo ----
+2026-06-28 18:17:20,805 - AstroRectify - INFO - direct RA: 316.35216372550195
+2026-06-28 18:17:20,805 - AstroRectify - INFO - converse RA: 223.94636010550192
+2026-06-28 18:17:20,806 - AstroRectify - INFO - direct Ecliptic longitude: 313.8855728391456
+2026-06-28 18:17:20,806 - AstroRectify - INFO - converse Ecliptic longitude: 226.41292371299488
+2026-06-28 18:17:20,806 - AstroRectify - INFO - 
+
+--- rectificando para arco 23.378058430000003 Nacimiento de hijo ----
+2026-06-28 18:17:20,806 - AstroRectify - INFO - direct RA: 293.52732034550195
+2026-06-28 18:17:20,806 - AstroRectify - INFO - converse RA: 246.77120348550193
+2026-06-28 18:17:20,806 - AstroRectify - INFO - direct Ecliptic longitude: 291.7742735047217
+2026-06-28 18:17:20,807 - AstroRectify - INFO - converse Ecliptic longitude: 248.50661332101424
+2026-06-28 18:17:20,807 - AstroRectify - INFO - MC ecliptica 291.7742735047217
+2026-06-28 18:17:20,807 - AstroRectify - INFO - venus 141.7752777777778 🎯 aspect 150 quincuncio orbe 0.0010042730561110602
+2026-06-28 18:17:20,807 - AstroRectify - INFO - MC RA directo ajustada 293.5283873469275
+2026-06-28 18:17:20,807 - AstroRectify - INFO - --> RA directa ajustada: 270.1503289169275 🆗
+2026-06-28 18:17:20,808 - AstroRectify - INFO - 
+
+--- rectificando para arco 40.78679154 Graduación biorreprogramación ----
+2026-06-28 18:17:20,808 - AstroRectify - INFO - direct RA: 310.93605345550196
+2026-06-28 18:17:20,808 - AstroRectify - INFO - converse RA: 229.36247037550194
+2026-06-28 18:17:20,808 - AstroRectify - INFO - direct Ecliptic longitude: 308.51118507115496
+2026-06-28 18:17:20,808 - AstroRectify - INFO - converse Ecliptic longitude: 231.78253704084165
+2026-06-28 18:17:20,809 - AstroRectify - INFO - MC ecliptica 231.78253704084165
+2026-06-28 18:17:20,809 - AstroRectify - INFO - sun 96.84027777777777 🎯 aspect 135 sesquicuadratura orbe 0.05774073693612536
+2026-06-28 18:17:20,809 - AstroRectify - INFO - --> RA conversa ajustada: 229.42118575085854
+2026-06-28 18:17:20,809 - AstroRectify - INFO - --> MC radix ajustado: 270.20797729085854 🆗
+2026-06-28 18:17:20,809 - AstroRectify - INFO - MC ecliptica 231.78253704084165
+2026-06-28 18:17:20,809 - AstroRectify - INFO - venus 141.7752777777778 🎯 aspect 90 cuadratura orbe -0.007259263063843946
+2026-06-28 18:17:20,809 - AstroRectify - INFO - --> RA conversa ajustada: 229.3550892929577
+2026-06-28 18:17:20,810 - AstroRectify - INFO - --> MC radix ajustado: 270.1418808329577 🆗
+2026-06-28 18:17:20,810 - AstroRectify - INFO - 
+
+--- rectificando para arco 47.681740090000005 Graduación MTC neijing ----
+2026-06-28 18:17:20,810 - AstroRectify - INFO - direct RA: 317.83100200550194
+2026-06-28 18:17:20,810 - AstroRectify - INFO - converse RA: 222.46752182550193
+2026-06-28 18:17:20,810 - AstroRectify - INFO - direct Ecliptic longitude: 315.36823644391393
+2026-06-28 18:17:20,810 - AstroRectify - INFO - converse Ecliptic longitude: 224.93159145276059
+2026-06-28 18:17:20,811 - AstroRectify - INFO - 
+
+--- rectificando para arco 17.12807767 Graduación colegio secundario ----
+2026-06-28 18:17:20,811 - AstroRectify - INFO - direct RA: 287.2773395855019
+2026-06-28 18:17:20,811 - AstroRectify - INFO - converse RA: 253.02118424550193
+2026-06-28 18:17:20,811 - AstroRectify - INFO - direct Ecliptic longitude: 285.92685457273836
+2026-06-28 18:17:20,811 - AstroRectify - INFO - converse Ecliptic longitude: 254.35084563796045
+2026-06-28 18:17:20,812 - AstroRectify - INFO - MC ecliptica 254.35084563796045
+2026-06-28 18:17:20,812 - AstroRectify - INFO - saturn 110.385 🎯 aspect 144 biquintil orbe 0.03415436203954414
+2026-06-28 18:17:20,812 - AstroRectify - INFO - --> RA conversa ajustada: 253.0579093759294
+2026-06-28 18:17:20,812 - AstroRectify - INFO - --> MC radix ajustado: 270.1859870459294 🆗
+2026-06-28 18:17:20,812 - AstroRectify - INFO - 
+
+--- rectificando para arco 45.458085450000006 Enfermedad ----
+2026-06-28 18:17:20,812 - AstroRectify - INFO - direct RA: 315.60734736550194
+2026-06-28 18:17:20,812 - AstroRectify - INFO - converse RA: 224.69117646550194
+2026-06-28 18:17:20,812 - AstroRectify - INFO - direct Ecliptic longitude: 313.14132383177537
+2026-06-28 18:17:20,812 - AstroRectify - INFO - converse Ecliptic longitude: 227.15650535042087
+2026-06-28 18:17:20,813 - AstroRectify - INFO - 
+
+
+resultados finales:
+2026-06-28 18:17:20,813 - AstroRectify - INFO - --------------------------------
+2026-06-28 18:17:20,816 - AstroRectify - INFO - MC radix ajustado: 1 270.11082733085857, sun, sesquicuadratura, Comienzo de relación romántica
+2026-06-28 18:17:20,818 - AstroRectify - INFO - MC radix ajustado: 2 270.11082733085857, sun, sesquicuadratura, Jail
+2026-06-28 18:17:20,819 - AstroRectify - INFO - MC radix ajustado: 3 270.1503289169275, venus, quincuncio, Nacimiento de hijo
+2026-06-28 18:17:20,819 - AstroRectify - INFO - MC radix ajustado: 4 270.20797729085854, sun, sesquicuadratura, Graduación biorreprogramación
+2026-06-28 18:17:20,819 - AstroRectify - INFO - MC radix ajustado: 5 270.1418808329577, venus, cuadratura, Graduación biorreprogramación
+2026-06-28 18:17:20,819 - AstroRectify - INFO - MC radix ajustado: 6 270.1859870459294, saturn, biquintil, Graduación colegio secundario
+2026-06-28 18:17:20,822 - AstroRectify - INFO - --------------------------
+2026-06-28 18:17:20,822 - AstroRectify - INFO - con tolerancia orbe 0.0666667 (4.000001999999999")
+2026-06-28 18:17:20,822 - AstroRectify - INFO - nueva ARMC 270.15130479139833
+2026-06-28 18:17:20,823 - AstroRectify - INFO - ARMC radical original 270.14926191550194
+2026-06-28 18:17:20,823 - AstroRectify - INFO - nueva longitud ecliptica 270.13881873842075
+2026-06-28 18:17:20,824 - AstroRectify - INFO - Aceleración 4.750139716548963 * 0.00273791=0.013005455031336571
+2026-06-28 18:17:20,824 - AstroRectify - INFO - nueva hora local 23 44 57
+2026-06-28 18:19:58,997 - AstroRectify - INFO - longitud geografica W 5.101111111111111
+2026-06-28 18:19:59,003 - AstroRectify - INFO - RAMC del radix 270.14926191550194
+2026-06-28 18:19:59,003 - AstroRectify - INFO - 
+
+--- rectificando para arco 25.30756458 Comienzo empleo profesional ----
+2026-06-28 18:19:59,003 - AstroRectify - INFO - direct RA: 295.45682649550196
+2026-06-28 18:19:59,003 - AstroRectify - INFO - converse RA: 244.84169733550195
+2026-06-28 18:19:59,004 - AstroRectify - INFO - direct Ecliptic longitude: 293.5940614382501
+2026-06-28 18:19:59,004 - AstroRectify - INFO - converse Ecliptic longitude: 246.68798287343762
+2026-06-28 18:19:59,004 - AstroRectify - INFO - 
+
+--- rectificando para arco 47.309331910000004 Renuncia ----
+2026-06-28 18:19:59,004 - AstroRectify - INFO - direct RA: 317.45859382550196
+2026-06-28 18:19:59,004 - AstroRectify - INFO - converse RA: 222.83993000550194
+2026-06-28 18:19:59,004 - AstroRectify - INFO - direct Ecliptic longitude: 314.99424302639585
+2026-06-28 18:19:59,004 - AstroRectify - INFO - converse Ecliptic longitude: 225.30524895550062
+2026-06-28 18:19:59,005 - AstroRectify - INFO - 
+
+--- rectificando para arco 35.85103385 Matrimonio ----
+2026-06-28 18:19:59,005 - AstroRectify - INFO - direct RA: 306.00029576550196
+2026-06-28 18:19:59,005 - AstroRectify - INFO - converse RA: 234.29822806550195
+2026-06-28 18:19:59,005 - AstroRectify - INFO - direct Ecliptic longitude: 303.6871610981842
+2026-06-28 18:19:59,005 - AstroRectify - INFO - converse Ecliptic longitude: 236.6024471407562
+2026-06-28 18:19:59,005 - AstroRectify - INFO - 
+
+--- rectificando para arco 37.02223059 Divorcio ----
+2026-06-28 18:19:59,005 - AstroRectify - INFO - direct RA: 307.17149250550193
+2026-06-28 18:19:59,005 - AstroRectify - INFO - converse RA: 233.12703132550195
+2026-06-28 18:19:59,005 - AstroRectify - INFO - direct Ecliptic longitude: 304.82571142423075
+2026-06-28 18:19:59,005 - AstroRectify - INFO - converse Ecliptic longitude: 235.46484643598075
+2026-06-28 18:19:59,005 - AstroRectify - INFO - 
+
+--- rectificando para arco 40.68964158 Comienzo de relación romántica ----
+2026-06-28 18:19:59,006 - AstroRectify - INFO - direct RA: 310.83890349550194
+2026-06-28 18:19:59,006 - AstroRectify - INFO - converse RA: 229.45962033550194
+2026-06-28 18:19:59,006 - AstroRectify - INFO - direct Ecliptic longitude: 308.4155695538868
+2026-06-28 18:19:59,006 - AstroRectify - INFO - converse Ecliptic longitude: 231.87806900273372
+2026-06-28 18:19:59,006 - AstroRectify - INFO - MC ecliptica 231.87806900273372
+2026-06-28 18:19:59,006 - AstroRectify - INFO - sun 96.84027777777777 🎯 aspect 135 sesquicuadratura orbe -0.037791224955952885
+2026-06-28 18:19:59,008 - AstroRectify - INFO - --> RA conversa ajustada: 229.42118575085854
+2026-06-28 18:19:59,009 - AstroRectify - INFO - --> MC radix ajustado: 270.11082733085857 🆗
+2026-06-28 18:19:59,010 - AstroRectify - INFO - 
+
+--- rectificando para arco 40.68964158 Jail ----
+2026-06-28 18:19:59,011 - AstroRectify - INFO - direct RA: 310.83890349550194
+2026-06-28 18:19:59,011 - AstroRectify - INFO - converse RA: 229.45962033550194
+2026-06-28 18:19:59,011 - AstroRectify - INFO - direct Ecliptic longitude: 308.4155695538868
+2026-06-28 18:19:59,011 - AstroRectify - INFO - converse Ecliptic longitude: 231.87806900273372
+2026-06-28 18:19:59,014 - AstroRectify - INFO - MC ecliptica 231.87806900273372
+2026-06-28 18:19:59,016 - AstroRectify - INFO - sun 96.84027777777777 🎯 aspect 135 sesquicuadratura orbe -0.037791224955952885
+2026-06-28 18:19:59,016 - AstroRectify - INFO - --> RA conversa ajustada: 229.42118575085854
+2026-06-28 18:19:59,017 - AstroRectify - INFO - --> MC radix ajustado: 270.11082733085857 🆗
+2026-06-28 18:19:59,019 - AstroRectify - INFO - 
+
+--- rectificando para arco 47.54411098 Casamiento civil con Mariano ----
+2026-06-28 18:19:59,019 - AstroRectify - INFO - direct RA: 317.69337289550197
+2026-06-28 18:19:59,020 - AstroRectify - INFO - converse RA: 222.60515093550194
+2026-06-28 18:19:59,020 - AstroRectify - INFO - direct Ecliptic longitude: 315.2299726447469
+2026-06-28 18:19:59,020 - AstroRectify - INFO - converse Ecliptic longitude: 225.06973106649087
+2026-06-28 18:19:59,021 - AstroRectify - INFO - 
+
+--- rectificando para arco 46.20290181 Mundanza al campo ----
+2026-06-28 18:19:59,021 - AstroRectify - INFO - direct RA: 316.35216372550195
+2026-06-28 18:19:59,022 - AstroRectify - INFO - converse RA: 223.94636010550192
+2026-06-28 18:19:59,022 - AstroRectify - INFO - direct Ecliptic longitude: 313.8855728391456
+2026-06-28 18:19:59,022 - AstroRectify - INFO - converse Ecliptic longitude: 226.41292371299488
+2026-06-28 18:19:59,022 - AstroRectify - INFO - 
+
+--- rectificando para arco 23.378058430000003 Nacimiento de hijo ----
+2026-06-28 18:19:59,022 - AstroRectify - INFO - direct RA: 293.52732034550195
+2026-06-28 18:19:59,022 - AstroRectify - INFO - converse RA: 246.77120348550193
+2026-06-28 18:19:59,022 - AstroRectify - INFO - direct Ecliptic longitude: 291.7742735047217
+2026-06-28 18:19:59,022 - AstroRectify - INFO - converse Ecliptic longitude: 248.50661332101424
+2026-06-28 18:19:59,022 - AstroRectify - INFO - MC ecliptica 291.7742735047217
+2026-06-28 18:19:59,022 - AstroRectify - INFO - venus 141.7752777777778 🎯 aspect 150 quincuncio orbe 0.0010042730561110602
+2026-06-28 18:19:59,023 - AstroRectify - INFO - MC RA directo ajustada 293.5283873469275
+2026-06-28 18:19:59,023 - AstroRectify - INFO - --> RA directa ajustada: 270.1503289169275 🆗
+2026-06-28 18:19:59,023 - AstroRectify - INFO - 
+
+--- rectificando para arco 40.78679154 Graduación biorreprogramación ----
+2026-06-28 18:19:59,023 - AstroRectify - INFO - direct RA: 310.93605345550196
+2026-06-28 18:19:59,023 - AstroRectify - INFO - converse RA: 229.36247037550194
+2026-06-28 18:19:59,023 - AstroRectify - INFO - direct Ecliptic longitude: 308.51118507115496
+2026-06-28 18:19:59,023 - AstroRectify - INFO - converse Ecliptic longitude: 231.78253704084165
+2026-06-28 18:19:59,023 - AstroRectify - INFO - MC ecliptica 231.78253704084165
+2026-06-28 18:19:59,023 - AstroRectify - INFO - sun 96.84027777777777 🎯 aspect 135 sesquicuadratura orbe 0.05774073693612536
+2026-06-28 18:19:59,024 - AstroRectify - INFO - --> RA conversa ajustada: 229.42118575085854
+2026-06-28 18:19:59,024 - AstroRectify - INFO - --> MC radix ajustado: 270.20797729085854 🆗
+2026-06-28 18:19:59,024 - AstroRectify - INFO - MC ecliptica 231.78253704084165
+2026-06-28 18:19:59,024 - AstroRectify - INFO - venus 141.7752777777778 🎯 aspect 90 cuadratura orbe -0.007259263063843946
+2026-06-28 18:19:59,024 - AstroRectify - INFO - --> RA conversa ajustada: 229.3550892929577
+2026-06-28 18:19:59,024 - AstroRectify - INFO - --> MC radix ajustado: 270.1418808329577 🆗
+2026-06-28 18:19:59,024 - AstroRectify - INFO - 
+
+--- rectificando para arco 47.681740090000005 Graduación MTC neijing ----
+2026-06-28 18:19:59,024 - AstroRectify - INFO - direct RA: 317.83100200550194
+2026-06-28 18:19:59,024 - AstroRectify - INFO - converse RA: 222.46752182550193
+2026-06-28 18:19:59,025 - AstroRectify - INFO - direct Ecliptic longitude: 315.36823644391393
+2026-06-28 18:19:59,025 - AstroRectify - INFO - converse Ecliptic longitude: 224.93159145276059
+2026-06-28 18:19:59,025 - AstroRectify - INFO - 
+
+--- rectificando para arco 17.12807767 Graduación colegio secundario ----
+2026-06-28 18:19:59,025 - AstroRectify - INFO - direct RA: 287.2773395855019
+2026-06-28 18:19:59,026 - AstroRectify - INFO - converse RA: 253.02118424550193
+2026-06-28 18:19:59,026 - AstroRectify - INFO - direct Ecliptic longitude: 285.92685457273836
+2026-06-28 18:19:59,026 - AstroRectify - INFO - converse Ecliptic longitude: 254.35084563796045
+2026-06-28 18:19:59,026 - AstroRectify - INFO - MC ecliptica 254.35084563796045
+2026-06-28 18:19:59,027 - AstroRectify - INFO - saturn 110.385 🎯 aspect 144 biquintil orbe 0.03415436203954414
+2026-06-28 18:19:59,027 - AstroRectify - INFO - --> RA conversa ajustada: 253.0579093759294
+2026-06-28 18:19:59,027 - AstroRectify - INFO - --> MC radix ajustado: 270.1859870459294 🆗
+2026-06-28 18:19:59,027 - AstroRectify - INFO - 
+
+--- rectificando para arco 45.458085450000006 Enfermedad ----
+2026-06-28 18:19:59,027 - AstroRectify - INFO - direct RA: 315.60734736550194
+2026-06-28 18:19:59,027 - AstroRectify - INFO - converse RA: 224.69117646550194
+2026-06-28 18:19:59,028 - AstroRectify - INFO - direct Ecliptic longitude: 313.14132383177537
+2026-06-28 18:19:59,028 - AstroRectify - INFO - converse Ecliptic longitude: 227.15650535042087
+2026-06-28 18:19:59,028 - AstroRectify - INFO - 
+
+--- rectificando para arco 13.517337490000001 Nacimiento hermano ----
+2026-06-28 18:19:59,028 - AstroRectify - INFO - direct RA: 283.6665994055019
+2026-06-28 18:19:59,028 - AstroRectify - INFO - converse RA: 256.63192442550195
+2026-06-28 18:19:59,028 - AstroRectify - INFO - direct Ecliptic longitude: 282.57619406337
+2026-06-28 18:19:59,028 - AstroRectify - INFO - converse Ecliptic longitude: 257.7000832583651
+2026-06-28 18:19:59,029 - AstroRectify - INFO - 
+
+
+resultados finales:
+2026-06-28 18:19:59,029 - AstroRectify - INFO - --------------------------------
+2026-06-28 18:19:59,033 - AstroRectify - INFO - MC radix ajustado: 1 270.11082733085857, sun, sesquicuadratura, Comienzo de relación romántica
+2026-06-28 18:19:59,033 - AstroRectify - INFO - MC radix ajustado: 2 270.11082733085857, sun, sesquicuadratura, Jail
+2026-06-28 18:19:59,033 - AstroRectify - INFO - MC radix ajustado: 3 270.1503289169275, venus, quincuncio, Nacimiento de hijo
+2026-06-28 18:19:59,035 - AstroRectify - INFO - MC radix ajustado: 4 270.20797729085854, sun, sesquicuadratura, Graduación biorreprogramación
+2026-06-28 18:19:59,035 - AstroRectify - INFO - MC radix ajustado: 5 270.1418808329577, venus, cuadratura, Graduación biorreprogramación
+2026-06-28 18:19:59,035 - AstroRectify - INFO - MC radix ajustado: 6 270.1859870459294, saturn, biquintil, Graduación colegio secundario
+2026-06-28 18:19:59,036 - AstroRectify - INFO - --------------------------
+2026-06-28 18:19:59,036 - AstroRectify - INFO - con tolerancia orbe 0.0666667 (4.000001999999999")
+2026-06-28 18:19:59,036 - AstroRectify - INFO - nueva ARMC 270.15130479139833
+2026-06-28 18:19:59,036 - AstroRectify - INFO - ARMC radical original 270.14926191550194
+2026-06-28 18:19:59,037 - AstroRectify - INFO - nueva longitud ecliptica 270.13881873842075
+2026-06-28 18:19:59,037 - AstroRectify - INFO - Aceleración 4.750139716548963 * 0.00273791=0.013005455031336571
+2026-06-28 18:19:59,037 - AstroRectify - INFO - nueva hora local 23 44 57
+2026-06-28 18:20:48,036 - AstroRectify - INFO - longitud geografica W 5.101111111111111
+2026-06-28 18:20:48,049 - AstroRectify - INFO - RAMC del radix 270.14926191550194
+2026-06-28 18:20:48,049 - AstroRectify - INFO - 
+
+--- rectificando para arco 25.30756458 Comienzo empleo profesional ----
+2026-06-28 18:20:48,049 - AstroRectify - INFO - direct RA: 295.45682649550196
+2026-06-28 18:20:48,049 - AstroRectify - INFO - converse RA: 244.84169733550195
+2026-06-28 18:20:48,050 - AstroRectify - INFO - direct Ecliptic longitude: 293.5940614382501
+2026-06-28 18:20:48,050 - AstroRectify - INFO - converse Ecliptic longitude: 246.68798287343762
+2026-06-28 18:20:48,050 - AstroRectify - INFO - 
+
+--- rectificando para arco 47.309331910000004 Renuncia ----
+2026-06-28 18:20:48,051 - AstroRectify - INFO - direct RA: 317.45859382550196
+2026-06-28 18:20:48,051 - AstroRectify - INFO - converse RA: 222.83993000550194
+2026-06-28 18:20:48,051 - AstroRectify - INFO - direct Ecliptic longitude: 314.99424302639585
+2026-06-28 18:20:48,051 - AstroRectify - INFO - converse Ecliptic longitude: 225.30524895550062
+2026-06-28 18:20:48,052 - AstroRectify - INFO - 
+
+--- rectificando para arco 35.85103385 Matrimonio ----
+2026-06-28 18:20:48,052 - AstroRectify - INFO - direct RA: 306.00029576550196
+2026-06-28 18:20:48,052 - AstroRectify - INFO - converse RA: 234.29822806550195
+2026-06-28 18:20:48,053 - AstroRectify - INFO - direct Ecliptic longitude: 303.6871610981842
+2026-06-28 18:20:48,053 - AstroRectify - INFO - converse Ecliptic longitude: 236.6024471407562
+2026-06-28 18:20:48,053 - AstroRectify - INFO - 
+
+--- rectificando para arco 37.02223059 Divorcio ----
+2026-06-28 18:20:48,053 - AstroRectify - INFO - direct RA: 307.17149250550193
+2026-06-28 18:20:48,054 - AstroRectify - INFO - converse RA: 233.12703132550195
+2026-06-28 18:20:48,054 - AstroRectify - INFO - direct Ecliptic longitude: 304.82571142423075
+2026-06-28 18:20:48,054 - AstroRectify - INFO - converse Ecliptic longitude: 235.46484643598075
+2026-06-28 18:20:48,054 - AstroRectify - INFO - 
+
+--- rectificando para arco 40.68964158 Comienzo de relación romántica ----
+2026-06-28 18:20:48,056 - AstroRectify - INFO - direct RA: 310.83890349550194
+2026-06-28 18:20:48,056 - AstroRectify - INFO - converse RA: 229.45962033550194
+2026-06-28 18:20:48,056 - AstroRectify - INFO - direct Ecliptic longitude: 308.4155695538868
+2026-06-28 18:20:48,057 - AstroRectify - INFO - converse Ecliptic longitude: 231.87806900273372
+2026-06-28 18:20:48,058 - AstroRectify - INFO - MC ecliptica 231.87806900273372
+2026-06-28 18:20:48,059 - AstroRectify - INFO - sun 96.84027777777777 🎯 aspect 135 sesquicuadratura orbe -0.037791224955952885
+2026-06-28 18:20:48,065 - AstroRectify - INFO - --> RA conversa ajustada: 229.42118575085854
+2026-06-28 18:20:48,066 - AstroRectify - INFO - --> MC radix ajustado: 270.11082733085857 🆗
+2026-06-28 18:20:48,066 - AstroRectify - INFO - 
+
+--- rectificando para arco 40.68964158 Jail ----
+2026-06-28 18:20:48,066 - AstroRectify - INFO - direct RA: 310.83890349550194
+2026-06-28 18:20:48,067 - AstroRectify - INFO - converse RA: 229.45962033550194
+2026-06-28 18:20:48,067 - AstroRectify - INFO - direct Ecliptic longitude: 308.4155695538868
+2026-06-28 18:20:48,069 - AstroRectify - INFO - converse Ecliptic longitude: 231.87806900273372
+2026-06-28 18:20:48,070 - AstroRectify - INFO - MC ecliptica 231.87806900273372
+2026-06-28 18:20:48,070 - AstroRectify - INFO - sun 96.84027777777777 🎯 aspect 135 sesquicuadratura orbe -0.037791224955952885
+2026-06-28 18:20:48,070 - AstroRectify - INFO - --> RA conversa ajustada: 229.42118575085854
+2026-06-28 18:20:48,070 - AstroRectify - INFO - --> MC radix ajustado: 270.11082733085857 🆗
+2026-06-28 18:20:48,071 - AstroRectify - INFO - 
+
+--- rectificando para arco 47.54411098 Casamiento civil con Mariano ----
+2026-06-28 18:20:48,071 - AstroRectify - INFO - direct RA: 317.69337289550197
+2026-06-28 18:20:48,071 - AstroRectify - INFO - converse RA: 222.60515093550194
+2026-06-28 18:20:48,072 - AstroRectify - INFO - direct Ecliptic longitude: 315.2299726447469
+2026-06-28 18:20:48,072 - AstroRectify - INFO - converse Ecliptic longitude: 225.06973106649087
+2026-06-28 18:20:48,073 - AstroRectify - INFO - 
+
+--- rectificando para arco 46.20290181 Mundanza al campo ----
+2026-06-28 18:20:48,073 - AstroRectify - INFO - direct RA: 316.35216372550195
+2026-06-28 18:20:48,074 - AstroRectify - INFO - converse RA: 223.94636010550192
+2026-06-28 18:20:48,074 - AstroRectify - INFO - direct Ecliptic longitude: 313.8855728391456
+2026-06-28 18:20:48,074 - AstroRectify - INFO - converse Ecliptic longitude: 226.41292371299488
+2026-06-28 18:20:48,074 - AstroRectify - INFO - 
+
+--- rectificando para arco 23.378058430000003 Nacimiento de hijo ----
+2026-06-28 18:20:48,074 - AstroRectify - INFO - direct RA: 293.52732034550195
+2026-06-28 18:20:48,074 - AstroRectify - INFO - converse RA: 246.77120348550193
+2026-06-28 18:20:48,075 - AstroRectify - INFO - direct Ecliptic longitude: 291.7742735047217
+2026-06-28 18:20:48,075 - AstroRectify - INFO - converse Ecliptic longitude: 248.50661332101424
+2026-06-28 18:20:48,075 - AstroRectify - INFO - MC ecliptica 291.7742735047217
+2026-06-28 18:20:48,075 - AstroRectify - INFO - venus 141.7752777777778 🎯 aspect 150 quincuncio orbe 0.0010042730561110602
+2026-06-28 18:20:48,075 - AstroRectify - INFO - MC RA directo ajustada 293.5283873469275
+2026-06-28 18:20:48,075 - AstroRectify - INFO - --> RA directa ajustada: 270.1503289169275 🆗
+2026-06-28 18:20:48,075 - AstroRectify - INFO - 
+
+--- rectificando para arco 40.78679154 Graduación biorreprogramación ----
+2026-06-28 18:20:48,075 - AstroRectify - INFO - direct RA: 310.93605345550196
+2026-06-28 18:20:48,075 - AstroRectify - INFO - converse RA: 229.36247037550194
+2026-06-28 18:20:48,075 - AstroRectify - INFO - direct Ecliptic longitude: 308.51118507115496
+2026-06-28 18:20:48,076 - AstroRectify - INFO - converse Ecliptic longitude: 231.78253704084165
+2026-06-28 18:20:48,076 - AstroRectify - INFO - MC ecliptica 231.78253704084165
+2026-06-28 18:20:48,076 - AstroRectify - INFO - sun 96.84027777777777 🎯 aspect 135 sesquicuadratura orbe 0.05774073693612536
+2026-06-28 18:20:48,076 - AstroRectify - INFO - --> RA conversa ajustada: 229.42118575085854
+2026-06-28 18:20:48,076 - AstroRectify - INFO - --> MC radix ajustado: 270.20797729085854 🆗
+2026-06-28 18:20:48,076 - AstroRectify - INFO - MC ecliptica 231.78253704084165
+2026-06-28 18:20:48,076 - AstroRectify - INFO - venus 141.7752777777778 🎯 aspect 90 cuadratura orbe -0.007259263063843946
+2026-06-28 18:20:48,077 - AstroRectify - INFO - --> RA conversa ajustada: 229.3550892929577
+2026-06-28 18:20:48,077 - AstroRectify - INFO - --> MC radix ajustado: 270.1418808329577 🆗
+2026-06-28 18:20:48,077 - AstroRectify - INFO - 
+
+--- rectificando para arco 47.681740090000005 Graduación MTC neijing ----
+2026-06-28 18:20:48,077 - AstroRectify - INFO - direct RA: 317.83100200550194
+2026-06-28 18:20:48,077 - AstroRectify - INFO - converse RA: 222.46752182550193
+2026-06-28 18:20:48,077 - AstroRectify - INFO - direct Ecliptic longitude: 315.36823644391393
+2026-06-28 18:20:48,077 - AstroRectify - INFO - converse Ecliptic longitude: 224.93159145276059
+2026-06-28 18:20:48,077 - AstroRectify - INFO - 
+
+--- rectificando para arco 17.12807767 Graduación colegio secundario ----
+2026-06-28 18:20:48,077 - AstroRectify - INFO - direct RA: 287.2773395855019
+2026-06-28 18:20:48,077 - AstroRectify - INFO - converse RA: 253.02118424550193
+2026-06-28 18:20:48,077 - AstroRectify - INFO - direct Ecliptic longitude: 285.92685457273836
+2026-06-28 18:20:48,078 - AstroRectify - INFO - converse Ecliptic longitude: 254.35084563796045
+2026-06-28 18:20:48,078 - AstroRectify - INFO - MC ecliptica 254.35084563796045
+2026-06-28 18:20:48,078 - AstroRectify - INFO - saturn 110.385 🎯 aspect 144 biquintil orbe 0.03415436203954414
+2026-06-28 18:20:48,078 - AstroRectify - INFO - --> RA conversa ajustada: 253.0579093759294
+2026-06-28 18:20:48,078 - AstroRectify - INFO - --> MC radix ajustado: 270.1859870459294 🆗
+2026-06-28 18:20:48,078 - AstroRectify - INFO - 
+
+--- rectificando para arco 45.458085450000006 Enfermedad ----
+2026-06-28 18:20:48,078 - AstroRectify - INFO - direct RA: 315.60734736550194
+2026-06-28 18:20:48,079 - AstroRectify - INFO - converse RA: 224.69117646550194
+2026-06-28 18:20:48,079 - AstroRectify - INFO - direct Ecliptic longitude: 313.14132383177537
+2026-06-28 18:20:48,079 - AstroRectify - INFO - converse Ecliptic longitude: 227.15650535042087
+2026-06-28 18:20:48,079 - AstroRectify - INFO - 
+
+--- rectificando para arco 1.66774098 Nacimiento hermano ----
+2026-06-28 18:20:48,079 - AstroRectify - INFO - direct RA: 271.81700289550196
+2026-06-28 18:20:48,079 - AstroRectify - INFO - converse RA: 268.4815209355019
+2026-06-28 18:20:48,079 - AstroRectify - INFO - direct Ecliptic longitude: 271.6671470416298
+2026-06-28 18:20:48,079 - AstroRectify - INFO - converse Ecliptic longitude: 268.6067785607077
+2026-06-28 18:20:48,079 - AstroRectify - INFO - 
+
+
+resultados finales:
+2026-06-28 18:20:48,080 - AstroRectify - INFO - --------------------------------
+2026-06-28 18:20:48,080 - AstroRectify - INFO - MC radix ajustado: 1 270.11082733085857, sun, sesquicuadratura, Comienzo de relación romántica
+2026-06-28 18:20:48,080 - AstroRectify - INFO - MC radix ajustado: 2 270.11082733085857, sun, sesquicuadratura, Jail
+2026-06-28 18:20:48,080 - AstroRectify - INFO - MC radix ajustado: 3 270.1503289169275, venus, quincuncio, Nacimiento de hijo
+2026-06-28 18:20:48,080 - AstroRectify - INFO - MC radix ajustado: 4 270.20797729085854, sun, sesquicuadratura, Graduación biorreprogramación
+2026-06-28 18:20:48,080 - AstroRectify - INFO - MC radix ajustado: 5 270.1418808329577, venus, cuadratura, Graduación biorreprogramación
+2026-06-28 18:20:48,080 - AstroRectify - INFO - MC radix ajustado: 6 270.1859870459294, saturn, biquintil, Graduación colegio secundario
+2026-06-28 18:20:48,081 - AstroRectify - INFO - --------------------------
+2026-06-28 18:20:48,081 - AstroRectify - INFO - con tolerancia orbe 0.0666667 (4.000001999999999")
+2026-06-28 18:20:48,081 - AstroRectify - INFO - nueva ARMC 270.15130479139833
+2026-06-28 18:20:48,081 - AstroRectify - INFO - ARMC radical original 270.14926191550194
+2026-06-28 18:20:48,081 - AstroRectify - INFO - nueva longitud ecliptica 270.13881873842075
+2026-06-28 18:20:48,081 - AstroRectify - INFO - Aceleración 4.750139716548963 * 0.00273791=0.013005455031336571
+2026-06-28 18:20:48,081 - AstroRectify - INFO - nueva hora local 23 44 57

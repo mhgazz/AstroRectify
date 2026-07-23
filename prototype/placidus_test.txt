@@ -1,0 +1,20 @@
+RA sif 295.031 aspect -30 PMP ap 269.9920627238855 cuadrante signf 3
+tan_decl -0.4314959063288065 tan_phi -0.6481676019318943 cos_ca -0.4952333257382621 total -0.13850768202143887
+ASC AO 29.677200000000028 Promittor RA 275.554 diferencial -7.961501435031808
+sol -30 mercurio Arco de Dirección Calculado: 13.52
+
+
+RA sif 295.031 aspect -45 PMP ap 257.1399444788336 cuadrante signf 3
+tan_decl -0.4314959063288065 tan_phi -0.6481676019318943 cos_ca -0.6760694657169625 total -0.18908423507714345
+ASC AO 29.677200000000028 Promittor RA 275.554 diferencial -10.899346036260397
+sol -45 mercurio Arco de Dirección Calculado: 29.31
+
+-- Mercury aspect semisextil+ RA ap 325.03 PMP ap 321.42146381928063 cuadrante signf ap 3
+ASC AO 29.82649124398438 Promittor RA 275.55454638070825 arco -51.78
+-- Mercury aspect semisextil- RA ap 265.03 PMP ap 270.0120205127602 cuadrante signf ap 3
+ASC AO 29.82649124398438 Promittor RA 275.55454638070825 arco 13.54
+
+-- Mercury aspect semicuadratura+ RA ap 340.03 PMP ap 334.27382464591074 cuadrante signf ap 3
+ASC AO 29.82649124398438 Promittor RA 275.55454638070825 arco -67.82
+-- Mercury aspect semicuadratura- RA ap 250.03 PMP ap 257.1596596861301 cuadrante signf ap 3
+ASC AO 29.82649124398438 Promittor RA 275.55454638070825 arco 29.32

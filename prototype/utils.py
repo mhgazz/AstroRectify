@@ -1,6 +1,9 @@
 import math
-from turtledemo import planet_and_moon
 
+def convert_angle_decimal(grade:int,mins:int,secs:int):
+    """ convert angle in decimal degrees """
+    decimal = grade + mins/60 + secs/3600
+    return decimal
 
 def get_RA_from_degree(grade:int,mins:int,secs:int):
     """ provide Right Ascention with standard declination value 23.44"""
@@ -79,6 +82,32 @@ def get_d_m(ra_angle: float, RAMC: float, RAIC: float, quadrant: int) -> float:
         raise ValueError("El cuadrante debe ser un valor entre 1 y 4.")
     return dm
 
+def is_between(target, start, end):
+    if start < end:
+        return start <= target < end
+    else:  # Spans across 0°
+        return target >= start or target < end
+
+def get_cuadrant(eclip_long, cusps):
+    """
+    Determines the quadrant of a planet based on house cusps.
+    1: Asc to IC, 2: IC to Dsc, 3: Dsc to MC, 4: MC to Asc
+    """
+    # cusps[1]=Asc, [4]=IC, [7]=Dsc, [10]=MC
+    asc = cusps[1]
+    ic = cusps[4]
+    dsc = cusps[7]
+    mc = cusps[10]
+
+    if is_between(eclip_long, asc, ic):
+        return 1
+    elif is_between(eclip_long, ic, dsc):
+        return 2
+    elif is_between(eclip_long, dsc, mc):
+        return 3
+    else:
+        return 4
+
 
 def get_d_a(natal_geo_latitude: float, dec: float, cuadrant:float):
     """
@@ -104,3 +133,34 @@ def get_angle_sexag(adhj_eclep_longitude_dir):
     m = int((adhj_eclep_longitude_dir % 1) * 60)
     s = int((((adhj_eclep_longitude_dir % 1) * 60) % 1) * 60)
     return g,m,s
+
+def get_placidus_mund_pos(md_s,sa_s,cuadrant,RAMC):
+    """obtener posicion mundana Placidus"""
+    pmp = 0
+    if cuadrant==1:
+        pmp = 90 - (90 * md_s / sa_s)
+    elif cuadrant==2:
+        pmp = 90 + (90 * md_s / sa_s)
+    elif cuadrant==3:
+        pmp = 270 - (90 * md_s / sa_s)
+    else:
+        pmp = 270 + (90 * md_s / sa_s)
+    return pmp
+
+def get_PMP(DA:float,PHI:float,decl:float,quadrt:int,RAMC:float,RAIC:float,RA_o:float):
+    """obtener placidus posicion mundana Placidus"""
+    pmp = 0
+    R = 0
+    if quadrt == 1:
+        R = (RA_o - RAIC) / (90 - DA)
+        pmp = RAIC - (90 * R)
+    elif quadrt == 2:
+        R = (RAIC - RA_o) / (90 - DA)
+        pmp = RAIC + (90 * R)
+    elif quadrt == 3:
+        R = (RAMC - RA_o) / (90 + DA)
+        pmp = RAMC - (90 * R)
+    elif quadrt == 4:
+        R = (RA_o - RAMC) / (90 + DA)
+        pmp = RAMC + (90 * R)
+    return pmp

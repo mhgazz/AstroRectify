@@ -33,6 +33,7 @@ def convert_angle_decimal(grade:int,mins:int,secs:int):
     """ convert angle in decimal degrees """
     decimal = grade + mins/60 + secs/3600
     return decimal
+
 def get_direction_arc(days:int):
     """get direction arc using Naibod key 59º08'33' """
     naibod_key: float = 0.00269861

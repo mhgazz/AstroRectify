@@ -37,6 +37,8 @@ def test_rectifier(includes):
     r.add_event("Graduación MTC neijing",2023,11,12)
     r.add_event("Graduación colegio secundario",1992,11,12)
     r.add_event("Enfermedad",2021,8,10)
+    r.add_event("Nacimiento hermano", 1989, 3, 15)
+    r.add_event("Nacimiento hermano", 1977, 3, 7)
 
     r.add_object(natal_chart_object(natal_chart_object.sun,6,50,25,natal_chart_object.cancer))
     r.add_object(natal_chart_object(natal_chart_object.moon,9,35,16,natal_chart_object.piscis))
