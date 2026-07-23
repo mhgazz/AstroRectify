@@ -1,0 +1,5 @@
+pysweph==2.10.3.6
+pyswisseph==2.10.3.2
+roman==5.2
+swisseph==0.0.0.dev1
+wxPython==4.2.5
