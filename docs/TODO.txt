@@ -1,2 +1,10 @@
-get_ecliptic_longitude()
-resolver problema de ARs negativas para ARMC de la primera mitad de los signos
+pendientes:
+- Placidus SA dirigir MC y ASC 
+- Placidus SA dirigir a cuspides
+- Topocentrico comparar con Makrasky
+- corregir signo de la declinacion de las casas negativo para casa bajo el orizonte
+- revisar código Morinos para encontrar polo y DAup para placidus y comparar con T
+
+errores: 
+- aspectos que pasan de 360 para dirigir
+- ASC como promitor no funciona 

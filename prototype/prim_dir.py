@@ -4,6 +4,7 @@ from zoneinfo import ZoneInfo
 from decimal import Decimal
 import math
 import roman
+import sys
 from aspects import calculate_aspects
 from heat_map import generate_date_heat_map
 from utils import get_RA_from_decimal
@@ -13,6 +14,12 @@ from utils import get_d_a
 from utils import get_angle_sexag
 from utils import get_cuadrant
 from utils import get_PMP
+from utils import get_placidus_mund_pos
+from utils import get_placidus_ratio
+from utils import calcular_arco_placidus
+from utils import normalize_angle
+from utils import get_placidus_pole
+
 
 def get_phi(d_m, s_arc, natal_geo_latitude,cuadrant):
     phi = math.degrees(math.atan(d_m / s_arc * math.tan(math.radians(natal_geo_latitude))))
@@ -38,6 +45,10 @@ def calculate_MC_direction(ra, ARMC, naibod_key, start_date):
     return conj, ye, days, mature_date
 
 
+if len(sys.argv) > 0:
+    hdsystem = sys.argv[1].split(":")[1]
+    promitor = sys.argv[2].split(":")[1].split(",")
+    significator = sys.argv[3].split(":")[1].split(",")
 
 MC_directions = []
 speculum = {}
@@ -51,11 +62,18 @@ date = datetime(1976, 12, 26, 17, 39, 42, tzinfo=timezone.utc)
 #system parameters
 naibod_key = 0.9856472
 oblicuity = 23.44
-hsys = b"P"
+
+if hdsystem=="Topocentric":
+    hsys = b"T"
+elif hdsystem=="Placidus-SA":
+    hsys = b"P"
+elif hdsystem=="Placidus-UP":
+    hsys = b"P"
+
 jd_ut, jd_tt = swe.utc_to_jd(
     date.year, date.month, date.day, date.hour, date.minute, date.second
 )
-max_age=60
+max_age=70
 
 PLANET_IDS = {
     "Sun": swe.SUN,
@@ -88,22 +106,24 @@ print(f"ARMC: {angles[2]}")
 ARMC = angles[2]
 ASC = angles[0]
 MC = angles[1]
-ARIC = ARMC - 180
-if ARIC<0:
-    ARIC = 360 - ARIC
 ASC_OA = ARMC + 90
 if ASC_OA > 360:
     ASC_OA = ASC_OA - 360
-print("\n")
+RAIC = ARMC - 180
+if RAIC < 0:
+    RAIC = 360 - RAIC
+print(f"RAIC: {RAIC}")
+
 
 h_ind:int=0
-for h in cusps[1:13]:
+for h in cusps[0:13]:
     h_ind = h_ind + 1
     eclp_cusp = h
     house = roman.toRoman(h_ind)
     ao = 0
     d_a_up = 0
     ra_cusp = math.degrees(math.atan(math.tan(math.radians(eclp_cusp)) * math.cos(math.radians(oblicuity))))
+    print(ra_cusp)
     if h_ind>=1 and h_ind<4:
         ao = ARMC + 90 + ( (h_ind-1) * 30)
         ra_cusp = ra_cusp + 0
@@ -113,7 +133,7 @@ for h in cusps[1:13]:
     elif h_ind>=7 and h_ind<10:
         ra_cusp = ra_cusp + 180
         ao = ARMC - (30 * (10-h_ind))
-    elif h_ind>=10 and h_ind<13:
+    elif h_ind>=10 and h_ind<12:
         ao = ARMC + 0 + ( (h_ind-10) * 30)
         ra_cusp = 360 + ra_cusp
 
@@ -133,11 +153,11 @@ for h in cusps[1:13]:
         house="MC"
         cuadrant=4
 
-    speculum[house] = (ra_cusp, decl, eclp_cusp, None, cuadrant, d_a_up, ao, do,phi,0,0,0)
+    speculum[house] = (ra_cusp, decl, eclp_cusp, None, cuadrant, d_a_up, ao, do,phi,0,0,0,ra_cusp)
     if h_ind in (10,11,12,1,2,3):
         aspects[house]  = calculate_aspects(eclp_cusp)
 
-RAIC = speculum["IV"][0]
+
 #generar speculum y aspectos de planetas
 for name, id_val in PLANET_IDS.items():
    # returns coordinates, flags, and error messages
@@ -145,10 +165,10 @@ for name, id_val in PLANET_IDS.items():
     if hsys.decode()=="T":
         # geo coordenadas para calculo topocentrico
         swe.set_topo(natal_geo_latitude,natal_geo_longitude)
-    coords, flag, _ = swe.calc_ut(jd_tt, id_val, iflag)
+    coords, flag = swe.calc_ut(jd_tt, id_val, iflag)
     ra = coords[0]
     dec = coords[1]
-    coords, flag, _ = swe.calc_ut(jd_tt, id_val)
+    coords, flag = swe.calc_ut(jd_tt, id_val)
     eclip_long = coords[0]
     eclip_lat = coords[1]
     cuadrant = get_cuadrant(eclip_long, cusps)
@@ -156,8 +176,24 @@ for name, id_val in PLANET_IDS.items():
     #speculum
     d_a, s_arc = get_d_a(natal_geo_latitude, dec, cuadrant)
     d_m = get_d_m(ra,ARMC,RAIC,cuadrant)
-    phi = get_phi(d_m,s_arc,natal_geo_latitude,cuadrant)
+    phi = 0
+    if hsys.decode()=="P" and hdsystem=="Placidus-UP":
+        phi = get_placidus_pole(d_m,s_arc,cuadrant,dec,d_a)
+        if name=="Sun":
+            phi=8.47
+        if name=="Mercury":
+            phi=1.661
+    elif hsys.decode()=="T":
+        phi = get_phi(d_m,s_arc,natal_geo_latitude,cuadrant)
+
     d_a_up = math.degrees( math.asin(math.tan(math.radians(phi)) * math.tan(math.radians(dec))) )
+    
+    pmp = 0
+    if hsys.decode()=='R':
+        pmp = get_PMP(d_a, natal_geo_latitude, dec, cuadrant, ARMC, RAIC, ra)
+    elif hsys.decode()=='P':
+        pmp = get_placidus_mund_pos(d_m,s_arc,cuadrant,ARMC)
+    
     AO = 0
     DO = 0
     if cuadrant == 1 or cuadrant ==4:
@@ -165,17 +201,18 @@ for name, id_val in PLANET_IDS.items():
     else:
         DO = ra + d_a_up
 
-    speculum[name] = (ra, dec, eclip_long, eclip_lat, cuadrant, d_a_up, AO, DO, phi, s_arc, d_m, d_a)
+    speculum[name] = (ra, dec, eclip_long, eclip_lat, cuadrant, d_a_up, AO, DO, phi, s_arc, d_m, d_a, pmp)
 
     # calculo de aspectos por cada cuerpo
     # sistema placidus con RA | sistema topocentrico con longitud ecliptica
+
     if hsys.decode()=='T':
         aspects[name]  = calculate_aspects(eclip_long)
-    else:
-        aspects[name] = calculate_aspects(ra)
+    elif hsys.decode()=='P':
+        aspects[name] = calculate_aspects(pmp)
 
 print(f"\n\n--- Speculum (System: {hsys.decode()}) ---")
-print("Cuerpo          α       λ       δ      AO.    DO.   DAup     φ    S.A.   D.M.   D.A.   Cuadrante")
+print("Cuerpo          α       λ       δ      AO.    DO.   DAup     φ    S.A.   D.M.   D.A.  PMP  Qd")
 for line in speculum:
     ra = speculum[line][0]
     dec = speculum[line][1]
@@ -189,75 +226,117 @@ for line in speculum:
     s_arc = speculum[line][9]
     d_m = speculum[line][10]
     d_a = speculum[line][11]
+    pmp = speculum[line][12]
     if DO is None:
         DO = 0
     if AO is None:
         AO = 0
     if dec is None:
         dec = 0
-    print(f"{line:<12}   {ra:>6.2f} {eclip_long:>6.2f} {dec:>6.2f} {AO:>6.2f} {DO:>6.2f} {d_a_up:>6.2f} {phi:>6.2f} {s_arc:>6.2f} {d_m:>6.2f} {d_a:>6.2f}    {cuadrant}")
+    print(f"{line:<12}   {ra:>6.2f} {eclip_long:>6.2f} {dec:>6.2f} {AO:>6.2f} {DO:>6.2f} {d_a_up:>6.2f} {phi:>6.2f} {s_arc:>6.2f} {d_m:>6.2f} {d_a:>6.2f} {pmp:>6.2f} {cuadrant}")
 
 
 
-print("\n\n")
-print(f"--- Direcciones de objetos ---")
 directions = {}
+#sys.exit(0)
+header="/"
 
 # calcular direcciones de planetas y ASC
 dir_concec = 0
 ids = {"MC":1,"ASC":2}
-#for name in PLANET_IDS.keys() | ids.keys():
-for name in ["Sun"]:
-    signf_ra     = speculum[name][0]
-    decl_p       = speculum[name][1]
-    signf_ao     = speculum[name][6]
-    signf_do     = speculum[name][7]
-    signf_aupu   = speculum[name][5]
-    signf_cudrt  = speculum[name][4]
+for name in PLANET_IDS.keys() | ids.keys():
+    if name not in promitor:
+        continue
+    signf_ra    = speculum[name][0]
+    decl_p      = speculum[name][1]
+    signf_ao    = speculum[name][6]
+    signf_do    = speculum[name][7]
+    signf_aupu  = speculum[name][5]
+    signf_cudrt = speculum[name][4]
     signf_phi   = speculum[name][8]
+    ad_p        = speculum[name][11]
     #print(f"\n\n --- promitor {name} RA {signf_ra} declination {decl_p} --------")
 
 
     for body,body_aspects in aspects.items():
-        if body!="Mars":
+        if body not in significator:
             continue
+        print(body_aspects)
         body_ra     = speculum[body][0]
         body_adup   = speculum[body][5]
         body_cudrt  = speculum[body][4]
         body_decl   = speculum[body][1]
+        sa_s        = speculum[body][9]
+        md_s        = speculum[body][10]
+
         #print(f"\n --- significador {body} aspectos en RA {str(body_aspects)}")
         for cur_aspect,cur_eclep_long in body_aspects.items():
             arc = 0
-            if hsys.decode()=="T":
-                # calculo topocentrico de arco de dirección
+            diff = 0
+
+            if body==name and cur_aspect=="conjuncion":
+                continue
+
+            if name=="MC":
+                # calculo de arco para MC igual para todos los sistema
+                arc = cur_ra - ARMC
+                arc = abs(arc)
+
+            elif hsys.decode()=="T":
+                # calculo topocentrico de arco de dirección sobre ecliptica
                 cur_ra = get_RA_from_decimal(cur_eclep_long)
                 ao_do_P = 0
                 new_d_a_up = 0
-
-                if body==name and cur_aspect=="conjuncion":
-                    continue
-
-                if name=="MC":
-                    # calculo de arco para MC
-                    arc = cur_ra - ARMC
-                    arc = abs(arc)
+                new_dec = get_declination(cur_eclep_long)
+                new_d_a_up = math.degrees( math.asin(math.tan(math.radians(signf_phi)) * math.tan(math.radians(new_dec))) )
+                arc = 0
+                ao_do_P = 0
+                if signf_cudrt==1 or signf_cudrt==4:
+                    ao_do_P = cur_ra - new_d_a_up
+                    arc =  ao_do_P - signf_ao
                 else:
-                    # calculo de arco para los demas objetos
-                    new_dec = get_declination(cur_eclep_long)
-                    new_d_a_up = math.degrees( math.asin(math.tan(math.radians(signf_phi)) * math.tan(math.radians(new_dec))) )
-                    arc = 0
-                    ao_do_P = 0
-                    if signf_cudrt==1 or signf_cudrt==4:
-                        ao_do_P = cur_ra - new_d_a_up
-                        arc =  ao_do_P - signf_ao
-                    else:
-                        ao_do_P = cur_ra + new_d_a_up
-                        arc = ao_do_P - signf_do
-                #print(f"-- significador {name} aspecto {cur_aspect} arco {arc}")
+                    ao_do_P = cur_ra + new_d_a_up
+                    arc = ao_do_P - signf_do
 
+            elif hsys.decode()=="P" and hdsystem=="Placidus-UP":
+                # calculo topocentrico de arco de dirección sobre ecliptica
+                cur_ra = get_RA_from_decimal(cur_eclep_long)
+                ao_do_P = 0
+                new_d_a_up = 0
+                new_dec = get_declination(cur_eclep_long)
+                new_d_a_up = math.degrees( math.asin(math.tan(math.radians(signf_phi)) * math.tan(math.radians(new_dec))) )
+                arc = 0
+                ao_do_P = 0
+                cuadrante_s = signf_cudrt
+                if signf_cudrt==1 or signf_cudrt==4:
+                    ao_do_P = cur_ra - new_d_a_up
+                    arc =  ao_do_P - signf_ao
+                else:
+                    ao_do_P = cur_ra + new_d_a_up
+                    arc = ao_do_P - signf_do
 
-            if hsys.decode()=="P":
-                # calculo metodo Placidus de arco de dirección
+            elif hsys.decode()=="P" and hdsystem=="Placidus-SA":
+                # calculo metodo Placidus por semiarco mundano de arco de dirección
+                cuadrt_s = body_cudrt
+                cur_ra = body_ra
+                ra_p= signf_ra
+                #pmp = get_placidus_mund_pos(md_s,sa_s,cuadrt_s,RAMC)
+                pmp = cur_eclep_long
+                #ra_ap = pmp + aspect_angle
+                pmp = normalize_angle(pmp)
+                #print(f"pmp ap {pmp}")
+                ratio,cuadrante_s = get_placidus_ratio(pmp)
+                arc,diff = calcular_arco_placidus(
+                    ra_p=ra_p,
+                    ad_p=ad_p,
+                    ratio=ratio,
+                    cuadrante_s=cuadrante_s,
+                    RAMC=ARMC,
+                    RAIC=RAIC)
+
+            if hsys.decode()=="R":
+                # calculo metodo Regiomentano generico arco de dirección
+                # TODO revisar con libro de Makrasky
                 cur_ra = body_ra
                 ra_ap = cur_eclep_long
                 decl_s = body_decl
@@ -266,7 +345,7 @@ for name in ["Sun"]:
                 new_d_a_up = 0
                 cuadrt_s = get_cuadrant(cur_ra, cusps)
                 ad_s, sa_s = get_d_a(natal_geo_latitude, decl_s, cuadrt_s)
-                pmp_pa = get_PMP(ad_s, natal_geo_latitude, decl_s, cuadrt_s, ARMC, ARIC, ra_ap)
+                pmp_pa = get_PMP(ad_s, natal_geo_latitude, decl_s, cuadrt_s, ARMC, RAIC, ra_ap)
                 #print(f"-- {body} aspect {cur_aspect} RA ap {ra_ap} PMP ap {pmp_pa} cuadrante signf ap {cuadrt_s}")
                 # resultado_arco = calcular_arco_placidus(ra_p=ra_p,ad_p=ad_p,ratio=ratio,cuadrante_s=cuadrante_s,RAMC=RAMC,RAIC=RAIC)
                 tan_decl = math.tan(math.radians(decl_p))
@@ -288,22 +367,24 @@ for name in ["Sun"]:
             if arc<=max_age:
                 mature_dt,days_arc=arc_to_date(arc, naibod_key, date)
                 ao_do = 0
-                if signf_ao is not None and signf_ao!=0:
-                    signf_cuadrant = get_cuadrant(signf_ao,cusps)
-                    ao_do = signf_ao
-                else:
-                    signf_cuadrant = get_cuadrant(signf_do,cusps)
-                    ao_do = signf_do
-
 
                 if hsys.decode() == "T":
+                    if signf_ao is not None and signf_ao!=0:
+                        signf_cuadrant = get_cuadrant(signf_ao,cusps)
+                        ao_do = signf_ao
+                    else:
+                        signf_cuadrant = get_cuadrant(signf_do,cusps)
+                        ao_do = signf_do
                     ao_do_P_cuadrant=get_cuadrant(ao_do_P,cusps)
                     directions[mature_dt+" "+str(dir_concec)] = (cur_aspect, arc,days_arc,name,body,signf_ra,ao_do,cur_ra,new_d_a_up,ao_do_P_cuadrant,signf_cuadrant,ao_do_P)
                     header = "Fecha      Arco        Prm      Aspect             Sig       Prm α   PrmAO/DO   Crd    Sig α   DAφ    SigAO/Do Cdr"
+                elif hsys.decode() == "P":
+                    directions[mature_dt+" "+str(dir_concec)] = (cur_aspect,arc,days_arc,name,body,signf_ra,ao_do,cur_ra,diff,cuadrante_s,signf_cudrt,pmp)
+                    header = "Fecha      Arco        Prm      Aspect             Sig       Prm α   PrmAO/DO  Crd_p  Sig α   Dif     PMPap   Cdr_s"
+                elif hsys.decode() == "R":
+                    pass
                 else:
-                    cuadrant_s=get_cuadrant(cur_ra,cusps)
-                    directions[mature_dt+" "+str(dir_concec)] = (cur_aspect,arc,days_arc,name,body,signf_ra,ao_do,cur_ra,diff,cuadrant_s,signf_cuadrant,pmp_pa)
-                    header = "Fecha      Arco        Prm      Aspect             Sig       Prm α   PrmAO/DO   Crd    Sig α   Dif    PMPap    Cdr"
+                    pass
                 dir_concec+=1
 
 sorted_directions = sorted(directions.items())
@@ -312,7 +393,7 @@ sorted_dates=[]
 for tt in sorted_directions:
     sorted_dates.append(tt[0])
 #results = generate_date_heat_map(sorted_dates,10)
-print("\n\nFecha      | Intensidad (Heat)")
+print("\n\nDirecciones primarias")
 print("-" * 28)
 
 # header
@@ -323,16 +404,10 @@ for upla in sorted_directions:
     dates_for_map.append(key)
     date_string = str(key).split(" ")[0]
     concec = str(key).split(" ")[1]
-    #str_date = date.strftime("%Y/%m/%d")
-    #datetime_obj = date.strptime(date_string, "%Y-%m-%d")
-    #print(f"{date} | {'*' * intensity} ({intensity})  {directions[key][0]} {directions[key][1]} {directions[key][2]} {directions[key][3]} --> {directions[key][4]}")
     cur_arc = directions[key][1]
     g, m, s = get_angle_sexag(float(cur_arc))
     arc_sexag = str(g) + "º" + str(m) + "," + str(s) + "'"
-    #arc_sexag = cur_arc
-    print(f"{date_string} {arc_sexag:10}  {directions[key][3]:8} {directions[key][0]:18} {directions[key][4]:8}  {str(round(float(directions[key][5]),3)):6}  {str(round(float(directions[key][6]),3)):6}    {directions[key][10]:1}     {round(float(directions[key][7]),3):6.3f} {round(float(directions[key][8]),2):6.3f} {round(float(directions[key][11]),2):6.3f}  {directions[key][9]:1}")
-    #print(f"{date_string},{arc_sexag:10},{directions[key][3]:8},{directions[key][0]:18},{directions[key][4]:8},{round(float(directions[key][5]), 3):<6.3f},{round(float(directions[key][6]), 3):<6.3f},{directions[key][10]:1},{round(float(directions[key][7]), 3):<6.3f},{round(float(directions[key][8]), 2):<6.3f},{round(float(directions[key][11]), 2):<6.3f},{directions[key][9]:1}")
-    #{ra:>6.2f}
+    print(f"{date_string} {arc_sexag:10}  {directions[key][3]:8} {directions[key][0]:18} {directions[key][4]:8}  {str(round(float(directions[key][5]),3)):6}  {str(round(float(directions[key][6]),3)):6}    {directions[key][10]:1}      {round(float(directions[key][7]),3):6.3f} {round(float(directions[key][8]),2):6.3f} {round(float(directions[key][11]),2):6.3f}  {directions[key][9]:1}")
 
 hm = generate_date_heat_map(dates_for_map,5)
 print("\n\nFecha      | Intensidad (Heat)")

@@ -13,8 +13,8 @@ def calculate_aspects(ra: float) -> dict[str,float]:
 
     # Función auxiliar para normalizar el ángulo entre 0 y 360 grados
     def normalize_angle(angle):
-        #return angle % 360
-        return angle
+        return angle % 360
+        #return angle
 
     # Aspectos principales
     aspect_degrees = {
@@ -36,6 +36,8 @@ def calculate_aspects(ra: float) -> dict[str,float]:
             aspects[name+"-"] = round(normalize_angle(ra - degrees),2)
         else:  # Oposición solo tiene un valor (RA + 180)
             aspects[name] = round(normalize_angle(ra + degrees),2)
+
+        #print(f"aspect {name} {degrees} valor {round(normalize_angle(ra + degrees),2)}")
 
     # Si quieres incluir la conjunción (el propio RA), puedes añadirla:
     # aspects.append(normalize_angle(ra))

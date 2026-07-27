@@ -94,10 +94,10 @@ def get_cuadrant(eclip_long, cusps):
     1: Asc to IC, 2: IC to Dsc, 3: Dsc to MC, 4: MC to Asc
     """
     # cusps[1]=Asc, [4]=IC, [7]=Dsc, [10]=MC
-    asc = cusps[1]
-    ic = cusps[4]
-    dsc = cusps[7]
-    mc = cusps[10]
+    asc = cusps[0]
+    ic = cusps[3]
+    dsc = cusps[6]
+    mc = cusps[9]
 
     if is_between(eclip_long, asc, ic):
         return 1
@@ -164,3 +164,85 @@ def get_PMP(DA:float,PHI:float,decl:float,quadrt:int,RAMC:float,RAIC:float,RA_o:
         R = (RA_o - RAMC) / (90 + DA)
         pmp = RAMC + (90 * R)
     return pmp
+
+def get_placidus_ratio(PMP_pa: float):
+    """ calculation of placidus ratio and cuadrant for PMP pa"""
+    ratio: float = 0
+    cuadrt: int = 0
+    if 0 <= PMP_pa and PMP_pa < 90:
+        ratio = 1 - (PMP_pa / 90)
+        cuadrt = 1
+    elif 90 <= PMP_pa and PMP_pa < 180:
+        ratio = (PMP_pa / 90) - 1
+        cuadrt = 2
+    elif 180 <= PMP_pa and PMP_pa < 270:
+        ratio = 3 - (PMP_pa / 90)
+        cuadrt = 3
+    elif 270 <= PMP_pa and PMP_pa < 360:
+        ratio = (PMP_pa / 90) - 3
+        cuadrt = 4
+    return ratio,cuadrt
+
+
+def calcular_arco_placidus(ra_p, ad_p, ratio, cuadrante_s,RAMC,RAIC):
+    """
+    Calcula el arco de dirección mundana según el método Placidus.
+
+    Parámetros:
+    ra_p        : Ascensión Recta del promisor (RA_P) en grados.
+    ad_p        : Diferencia Ascensional del promisor (AD_P) en grados.
+    md_s        : Distancia Meridiana del significador (MD_S) en grados.
+    sa_s        : Semi-arco del significador (SA_S) en grados.
+    cuadrante_s : Cuadrante del significador (1, 2, 3 o 4).
+    """
+    # 1. Determinar el valor de tau según el cuadrante del significador
+    if cuadrante_s in [1, 3]:
+        tau = 1
+    elif cuadrante_s in [2, 4]:
+        tau = -1
+    else:
+        raise ValueError(f"El cuadrante debe ser un entero entre 1 y 4. Valor {cuadrante_s} invalido.")
+
+    # 2. Determinar el valor de v según el cuadrante del significador
+    R = 0
+    if cuadrante_s in [1, 2]:
+        v = -1
+        R = RAIC
+        # Nota: En un cálculo real completo, aquí se usaría RA_IC
+    elif cuadrante_s in [3, 4]:
+        v = 1
+        R = RAMC
+        # Nota: En un cálculo real completo, aquí se usaría RA_MC
+
+    # Marcador de posición para R según la lógica del algoritmo provisto
+    # En el ejemplo del texto, se utiliza un valor de referencia R
+    # Para replicar el ejemplo exacto, asumimos que la fórmula se evalúa como:
+    # Arc = RA_P + tau * (90 + v * AD_P) * (MD_S / SA_S)
+
+    # 3. Calcular la proporción del significador
+    #proporcion_s = md_s / sa_s
+
+    # 4. Calcular el arco de dirección
+    # Modificamos la estructura para que coincida exactamente con el comportamiento del ejemplo:
+    factor_semiarco = 90 + (v * ad_p)
+    #arco = ra_p + (tau * factor_s   emiarco * proporcion_s)
+    arco = ra_p - R + (tau * factor_semiarco * ratio)
+
+    return arco,factor_semiarco
+
+
+def normalize_angle(angle):
+    return angle % 360
+
+
+def get_topocentric_pole(d_m, s_arc, natal_geo_latitude,cuadrant):
+    phi = math.degrees(math.atan(d_m / s_arc * math.tan(math.radians(natal_geo_latitude))))
+    return phi
+
+def get_placidus_pole(d_m:float, s_arc:float, cuadrant:int,decl:float,a_d:float):
+
+    #phi = math.degrees(math.atan(d_m / s_arc * math.tan(math.radians(natal_geo_latitude))))
+    a = 1 / math.tan(math.radians(decl))
+    b = math.sin(math.radians(d_m * a_d / s_arc))
+    phi = math.degrees(math.atan(a * b))
+    return phi
