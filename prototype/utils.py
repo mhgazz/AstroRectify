@@ -1,4 +1,8 @@
 import math
+from datetime import datetime, timezone, date, timedelta
+from zoneinfo import ZoneInfo
+from decimal import Decimal
+import sys
 
 def convert_angle_decimal(grade:int,mins:int,secs:int):
     """ convert angle in decimal degrees """
@@ -240,9 +244,18 @@ def get_topocentric_pole(d_m, s_arc, natal_geo_latitude,cuadrant):
     return phi
 
 def get_placidus_pole(d_m:float, s_arc:float, cuadrant:int,decl:float,a_d:float):
-
-    #phi = math.degrees(math.atan(d_m / s_arc * math.tan(math.radians(natal_geo_latitude))))
     a = 1 / math.tan(math.radians(decl))
     b = math.sin(math.radians(d_m * a_d / s_arc))
     phi = math.degrees(math.atan(a * b))
     return phi
+
+def arc_to_date(arc:float,naibod_key:float,init_date):
+    naibod_indx = naibod_key / 365.242197
+    #ye = arc / naibod_key
+    #dy = ye % 1
+    #days = 365 * dy
+    #total_days = (365 * int(ye)) + days
+    total_days = int(arc / 0.00269861)
+    mature_days = init_date + timedelta(days=total_days)
+    mature_dt = mature_days.strftime("%Y/%m/%d")
+    return mature_dt,total_days

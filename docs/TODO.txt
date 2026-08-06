@@ -1,10 +1,12 @@
 pendientes:
 - Placidus SA dirigir MC y ASC 
-- Placidus SA dirigir a cuspides
-- Topocentrico comparar con Makrasky
-- corregir signo de la declinacion de las casas negativo para casa bajo el orizonte
-- revisar código Morinos para encontrar polo y DAup para placidus y comparar con T
+- Placidus SA dirigir a cuspides --> OK
+- Topocentrico comparar con Makrasky --> OK identico
+- corregir signo de la declinacion de las casas negativo para casa bajo el horizonte ¿¿??
+- revisar código Morinos para encontrar polo y DAup para placidus y comparar con T --> ver planets.Planet.computePlacidianSpeculum[]
 
 errores: 
-- aspectos que pasan de 360 para dirigir
-- ASC como promitor no funciona 
+- E001 aspectos que pasan de 360 para dirigir
+- E002 ASC como promitor no funciona --> OK atribuible a E001
+- E003 conjución Topocentrico errada con respecto, si es conversa presenta mayor desviacion
+- E004 conjución MC a objetos en Placidus-SA y T errada con respecto a Morinus y Astro.com, ambos de acuerdo

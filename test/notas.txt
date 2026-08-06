@@ -1,13 +1,21 @@
+Direcciones primarias
+----------------------------
+Fecha      Arco        Prm      Aspect             Sig       Prm α   PrmAO/DO   Crd    Sig α   DAφ    SigAO/Do Cdr
+1990/03/23 13º2,59'    Sun      semisextil- C      Mercury   275.555  279.218    3      262.519  3.650 266.170  3
+1996/05/06 19º5,2'     Sun      conjuncion         Mercury   275.555  279.218    3      294.966  3.340 298.300  4
+1997/08/18 20º20,56'   Sun      quincuncio+ C      Mercury   275.555  279.218    3      262.519 -3.650 258.870  3
+2006/11/21 29º28,30'   Sun      semicuadratura- C  Mercury   275.555  279.218    3      246.371  3.370 249.740  3
+2013/09/24 36º13,9'    Sun      sesquicuadratura+ C Mercury   275.555  279.218    3      246.371 -3.370 243.000  3
+2023/04/14 45º38,1'    Sun      sextil- C          Mercury   275.555  279.218    3      230.735  2.850 233.580  3
+2026/01/09 48º20,6'    Sun      semisextil+        Mercury   275.555  279.218    3      325.468  2.090 327.550  4
+2029/01/23 51º19,55'   Sun      trigono+ C         Mercury   275.555  279.218    3      230.735 -2.850 227.890  3
+2039/09/21 61º50,9'    Sun      semicuadratura+    Mercury   275.555  279.218    3      339.783  1.270 341.050  4
 
-
-
-1987/03/02  arco:10.035 Sun|semisextil+|Neptune PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:285.71  DAuP:3.54 S_cuad:3
-    1990/01/16  arco:12.871 Sun|sextil-|Moon        PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:288.601 DAuP:3.49 S_cuad:3
-1993/02/01  arco:15.873 Sun|semisextil-|Venus   PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:291.671 DAuP:3.42 S_cuad:3
-2000/04/21  arco:22.984 Sun|sextil+|Pluto       PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:252.719 DAuP:3.51 S_cuad:3
-2002/11/25  arco:25.545 Sun|semicuadratura+|Nep PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:301.629 DAuP:3.13 S_cuad:4
-
-
-1988/12/07  arco:11.777 Sun|quincuncio+|Saturn  PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:287.485 DAuP:3.51 S_cuad:3
-1990/03/23  arco:13.05  Sun|semisextil-|Mercury PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:262.519 DAuP:3.65 S_cuad:3
-1991/08/29  arco:14.464 Sun|quincuncio-|Jupiter PromRA:275.555 AO/DO:279.218 P_cuad:3 SignRA:261.117 DAuP:3.64 S_cuad:3
+Direcciones primarias
+----------------------------
+Fecha      Arco        Prm      Aspect             Sig       Prm α   PrmAO/DO  Crd_p  Sig α   Dif     PMPap   Cdr_s
+1993/03/18 15º59,38'   Sun      semisextil-        Mercury   275.555  0.0       3      295.032 106.240 235.890  3
+1996/09/08 19º25,12'   Sun      conjuncion C       Mercury   275.555  0.0       3      295.032 106.240 265.890  3
+2011/03/06 33º42,3'    Sun      semicuadratura-    Mercury   275.555  0.0       3      295.032 106.240 220.890  3
+2029/02/20 51º24,29'   Sun      sextil-            Mercury   275.555  0.0       3      295.032 106.240 205.890  3
+2032/08/13 54º50,3'    Sun      semisextil+ C      Mercury   275.555  0.0       3      295.032 106.240 295.890  4
